@@ -10,7 +10,7 @@ namespace TPQUQ_9.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View(); // lol
         }
 
         public ActionResult About()
