@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<form action="@Url.Action("AcceptLogin","Registro")" method="get">
+    Email <input type="email" name="txtEmail" /><br />
+    Password <input type="password" name="txtPwd" /><br />
+    <input type="submit" value="Ingresar" />
+</form>
+<h3>@ViewBag.MensajeError</h3>
