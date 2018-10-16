@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante lo siguiente
 // conjunto de atributos. Cambie los valores de estos atributos para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("TPQUQ_9")]
+[assembly: AssemblyTitle("QEQ_09")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TPQUQ_9")]
+[assembly: AssemblyProduct("QEQ_09")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como ID de typelib si este proyecto se expone a COM
-[assembly: Guid("e8c5a727-196c-48a7-9c5e-bc105669b086")]
+[assembly: Guid("56019abb-a336-4463-ba8c-50ca2bac8cd8")]
 
 // La información de versión de un ensamblado consta de los siguientes cuatro valores:
 //

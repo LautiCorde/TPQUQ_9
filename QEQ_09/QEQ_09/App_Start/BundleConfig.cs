@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace TPQUQ_9
+namespace QEQ_09
 {
     public class BundleConfig
     {

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace TPQUQ_9
+namespace QEQ_09
 {
     public class RouteConfig
     {

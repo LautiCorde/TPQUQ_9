@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace TPQUQ_9.Controllers
+namespace QEQ_09.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            return View(); // lol
+            return View();
         }
 
         public ActionResult About()
