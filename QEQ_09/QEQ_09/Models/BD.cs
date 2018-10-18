@@ -7,5 +7,16 @@ namespace QEQ_09.Models
 {
     public class BD
     {
+        public static SqlConnection Connect()
+        {
+            //SqlConnection A = new SqlConnection("[DIRECCION DE LA BASE]");
+            A.Open();
+            return A;
+        }
+
+        //PARA DESCONECTARSE: Acces.Close();
+
+
+
     }
 }
