@@ -24,7 +24,7 @@ namespace QEQ_09.Models
 
         }
 
-        public static bool Login (string Email,string pwd)
+        public static bool Login (int idUsuario)
         {
 
             bool User = false;
@@ -32,8 +32,7 @@ namespace QEQ_09.Models
             SqlCommand consulta = Conexion.CreateCommand();
             consulta.CommandText = "ObtenerUsuario";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            consulta.Parameters.AddWithValue("@Email", Email);
-            consulta.Parameters.AddWithValue("@Password", pwd);
+            consulta.Parameters.AddWithValue("@idUsuario", idUsuario);
             SqlDataReader dataReader = consulta.ExecuteReader();
 
             if (dataReader.Read())
