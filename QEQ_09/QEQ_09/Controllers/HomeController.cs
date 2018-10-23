@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using QEQ_09.Models;
 
 namespace QEQ_09.Controllers
 {
@@ -30,6 +31,27 @@ namespace QEQ_09.Controllers
         {
             ViewBag.Message = " Usted debe adivinar el personaje seleccionado por el programa haciendo preguntas respecto a las apariencias de los personajes que se muestran en la pantalla y descartando los adecuados. puede arriesgar en cualquier momento de la partida si cree saber cuál es el personaje.";
             return View();
+        }
+
+
+
+        [HttpGet]
+        public ActionResult AcceptLogin(string txtEmail, string txtPwd)
+        {
+            Usuario MiUser = new Usuario();
+
+            if (MiUser.LoginUser(txtEmail, txtPwd) == true)
+            {
+                ViewBag.Usuario = "Bienvenido " + txtEmail;
+                ViewBag.ListaUsuarios = MiUser.MateriasUsuario();
+
+                return View("Index");
+            }
+            else
+            {
+                ViewBag.MensajeError = "Login incorrecto";
+                return View("Login");
+            }
         }
 
     }
