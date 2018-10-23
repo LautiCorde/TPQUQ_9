@@ -1,12 +1,16 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+<style>
+    body {
+        background-color:deepskyblue;
+    }
+</style>
 
 <a title="logo" target="_parent"><img src=~/Content/LOGO.jpg width="64" height="64" /> </a>
 
 <h3>@ViewBag.Message</h3>
-<a href= "@Url.Action("Registro", "Home")" title="Registrarse"target="_blank">Registro</a>
-<a href="@Url.Action("Login", "Home") " title="Login"target="_blank">Login</a> 
-<a href="@Url.Action("Instrucciones", "Home")" title="Instrucciones"target="_blank">Instrucciones</a>
-<a href="@Url.Action("Aboutus","Home")" title="About Us"target="_blank">Aboutus</a>
+<a href="@Url.Action("Registro", "Home")" title="Registrarse" target="_blank">Registrarse</a>
+<a href="@Url.Action("Login", "Home") " title="Login" target="_blank">Login</a>
+<a href="@Url.Action("Instrucciones", "Home")" title="Instrucciones" target="_blank">Instrucciones</a>
+<a href="@Url.Action("Aboutus","Home")" title="About Us" target="_blank">About us</a>
