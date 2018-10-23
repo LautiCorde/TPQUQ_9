@@ -33,26 +33,15 @@ namespace QEQ_09.Controllers
             return View();
         }
 
-
-
-        [HttpGet]
         public ActionResult AcceptLogin(string txtEmail, string txtPwd)
         {
-            Usuario MiUser = new Usuario();
 
-            if (MiUser.LoginUser(txtEmail, txtPwd) == true)
-            {
-                ViewBag.Usuario = "Bienvenido " + txtEmail;
-                ViewBag.ListaUsuarios = MiUser.MateriasUsuario();
+            ViewBag.Message = "Bienvenidos al juego";
 
-                return View("Index");
-            }
-            else
-            {
-                ViewBag.MensajeError = "Login incorrecto";
-                return View("Login");
-            }
+            return View();
         }
+
+
 
     }
 }

@@ -16,7 +16,7 @@ namespace QEQ_09.Models
             return a;
         }
 
-        public static string connectionString = "Server = LocalHost;Database=WebNews;Trusted_Connection=True;";
+        public static string connectionString = "Server = 10.128.8.16;Database=QEQC09;User ID = QEQC09; Pwd = QEQC09;";
 
         public static void Desconectar(SqlConnection conexion)
         {
@@ -24,24 +24,21 @@ namespace QEQ_09.Models
 
         }
 
-        public static bool Login (string Email,string pwd)
+        public static Usuario Login (int IdUsuario)
         {
-
-            bool news = false;
+            bool A = false;
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
-            consulta.CommandText = "GetNews";
+            consulta.CommandText = "GetUser";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            consulta.Parameters.AddWithValue("@Email", Email);
-            consulta.Parameters.AddWithValue("@Password", pwd);
+            consulta.Parameters.AddWithValue("@pidUsuario", IdUsuario);
             SqlDataReader dataReader = consulta.ExecuteReader();
             if (dataReader.Read())
             {
-                news = true;
-
+                A = true; 
             }
             Desconectar(Conexion);
-            return news;
+            return A;
         }
 
     }
