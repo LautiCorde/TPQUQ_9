@@ -47,5 +47,9 @@ namespace QEQ_09.Controllers
             return View();
         }
 
+        public ActionResult AcceptLogin()
+        {
+            return View();
+        }
     }
 }
