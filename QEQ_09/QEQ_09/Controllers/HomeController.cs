@@ -33,15 +33,19 @@ namespace QEQ_09.Controllers
             return View();
         }
 
-        public ActionResult AcceptLogin(string txtEmail, string txtPwd)
+        public ActionResult OlvidarContraseña()
         {
-
-            ViewBag.Message = "Bienvenidos al juego";
-
+            ViewBag.Message = "Si usted olvidó su contraseña, siga las instrucciones para recuperar el acceso a su cuenta";
             return View();
         }
 
 
+        [HttpGet]
+
+        public ActionResult Login()
+        {
+            return View();
+        }
 
     }
 }
