@@ -9,16 +9,40 @@ namespace QEQ_09.Models
 {
     public class BD
     {
-        public static SqlConnection Connect()
+        private static SqlConnection Conectar()
         {
-            SqlConnection A = new SqlConnection("[DIRECCION DE LA BASE]");
-            A.Open();
-            return A;
+            SqlConnection a = new SqlConnection(connectionString);
+            a.Open();
+            return a;
         }
 
-         Acces.Close();
+        public static string connectionString = "Server = LocalHost;Database=WebNews;Trusted_Connection=True;";
 
+        public static void Desconectar(SqlConnection conexion)
+        {
+            conexion.Close();
 
+        }
+
+        public static bool Login (string Email,string pwd)
+        {
+
+            bool news = false;
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "GetNews";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("@Email", Email);
+            consulta.Parameters.AddWithValue("@Password", pwd);
+            SqlDataReader dataReader = consulta.ExecuteReader();
+            if (dataReader.Read())
+            {
+                news = true;
+
+            }
+            Desconectar(Conexion);
+            return news;
+        }
 
     }
 }
