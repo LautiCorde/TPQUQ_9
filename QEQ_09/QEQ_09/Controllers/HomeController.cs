@@ -47,9 +47,27 @@ namespace QEQ_09.Controllers
             return View();
         }
 
+        [HttpGet]
+
         public ActionResult AcceptLogin()
         {
-            return View();
+            bool a;
+
+            a = Login;
+
+            if (a = true)
+            {
+                ViewBag.Usuario = "Bienvenido " + txtEmail;
+
+                return View("Index");
+            }
+
+              else
+            {
+                ViewBag.MensajeError = "Login incorrecto";
+                return View("Login");
+            }
+            
         }
     }
 }

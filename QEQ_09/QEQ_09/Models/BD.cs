@@ -24,7 +24,7 @@ namespace QEQ_09.Models
 
         }
 
-        public static Usuario Login (int IdUsuario)
+        public static bool  Login (int IdUsuario)
         {
             bool A = false;
             SqlConnection Conexion = Conectar();
