@@ -47,17 +47,18 @@ namespace QEQ_09.Controllers
             return View();
         }
 
+
         [HttpGet]
 
-        public ActionResult AcceptLogin()
+        public ActionResult AcceptLogin(int idUsuario)
         {
             bool a;
 
-            a = Login;
+            a = Models.BD.Login(idUsuario);
 
-            if (a = true)
+            if (a == true)
             {
-                ViewBag.Usuario = "Bienvenido " + txtEmail;
+                ViewBag.Usuario = "Bienvenido " ;
 
                 return View("Index");
             }
