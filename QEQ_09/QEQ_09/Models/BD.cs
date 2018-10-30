@@ -32,6 +32,7 @@ namespace QEQ_09.Models
             consulta.CommandText = "ObtenerUsuario";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
             consulta.Parameters.AddWithValue("@Email", Email);
+            consulta.Parameters.AddWithValue("@Password", Password);
             SqlDataReader dataReader = consulta.ExecuteReader();
             if (dataReader.Read())
             {
