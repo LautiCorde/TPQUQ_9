@@ -26,20 +26,20 @@ namespace QEQ_09.Models
 
         public static bool  Login (string Email)
         {
-            bool Email=false;
+            bool Existencia=false;
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
-            consulta.CommandText = "GetUser";
+            consulta.CommandText = "ObtenerUsuario";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
             consulta.Parameters.AddWithValue("@Email", Email);
             SqlDataReader dataReader = consulta.ExecuteReader();
             if (dataReader.Read())
             {
-                Email= true; 
+                Existencia = true; 
             }
 
             Desconectar(Conexion);
-            return Email;
+            return Existencia;
         }
 
     }

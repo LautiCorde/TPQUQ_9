@@ -50,13 +50,13 @@ namespace QEQ_09.Controllers
 
         [HttpGet]
 
-        public ActionResult AcceptLogin(int idUsuario)
+        public ActionResult AcceptLogin(string Email)
         {
-            bool a;
+            bool Existencia;
 
-            a = Models.BD.Login(idUsuario);
+            Existencia = Models.BD.Login(Email);
 
-            if (a == true)
+            if (Existencia == true)
             {
                 ViewBag.Usuario = "Bienvenido " ;
 
