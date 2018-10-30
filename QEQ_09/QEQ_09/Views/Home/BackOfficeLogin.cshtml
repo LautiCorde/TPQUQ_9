@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "BackOfficeLogin";
+
+
+    <style>
+        body {
+            background-color: deepskyblue;
+        }
+
+        #email {
+            margin-left: 26px;
+        }
+
+        #submit {
+            margin-left: 100px;
+        }
+    </style>
+}
+
+<h2>BackOffice Login</h2>
+
+<form action="@Url.Action("AcceptBackOfficeLogin","Home")" method="get">
+    Email <input type="email" name="Email" /><br />
+    Password <input type="password" name="Password" /><br />
+    <input id="submit" type="submit" value="Ingresar" />
+</form>
+
+<h3>@ViewBag.MensajeError</h3>
+
+

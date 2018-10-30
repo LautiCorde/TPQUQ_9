@@ -65,10 +65,41 @@ namespace QEQ_09.Controllers
 
               else
             {
-                ViewBag.MensajeError = "Sus datos son erroneos vuelva a ingresar";
+                ViewBag.MensajeError = "Error. Porfavor intente denuevo.";
                 return View("Login");
             }
             
         }
+
+        public ActionResult AcceptBackOfficeLogin(string Email, string Password)
+        {
+            bool Existencia;
+
+            Existencia = Models.BD.Login(Email, Password);
+
+            if (Existencia == true)
+            {
+                ViewBag.Usuario = "Bienvenido ";
+
+                return View("Index");
+            }
+
+            else
+            {
+                ViewBag.MensajeError = "Error. Porfavor intente denuevo.";
+                return View("Login");
+            }
+
+        }
+
+        [HttpGet]
+
+        public ActionResult BackOfficeLogin()
+        {
+            return View();
+        }
+
+
+
     }
 }
