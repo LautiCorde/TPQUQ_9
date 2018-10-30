@@ -52,44 +52,58 @@ namespace QEQ_09.Controllers
 
         public ActionResult AcceptLogin(string Email, string Password)
         {
-            bool Existencia;
-
-            Existencia = Models.BD.Login(Email,Password);
-
-            if (Existencia == true)
+            if (Email == "" || Password == "")
             {
-                ViewBag.Usuario = "Bienvenido " ;
-
-                return View("Index");
-            }
-
-              else
-            {
-                ViewBag.MensajeError = "Error. Porfavor intente denuevo.";
+                ViewBag.MensajeError = "Porfavor llene todos los campos";
                 return View("Login");
             }
-            
+            else
+            {
+                bool Existencia;
+
+                Existencia = Models.BD.Login(Email, Password);
+
+                if (Existencia == true)
+                {
+                    ViewBag.Usuario = "Bienvenido ";
+
+                    return View("Index");
+                }
+
+                else
+                {
+                    ViewBag.MensajeError = "Error. Porfavor intente denuevo.";
+                    return View("Login");
+                }
+            }
         }
 
         public ActionResult AcceptBackOfficeLogin(string Email, string Password)
         {
-            bool Existencia;
-
-            Existencia = Models.BD.Login(Email, Password);
-
-            if (Existencia == true)
+            if (Email == "" || Password == "")
             {
-                ViewBag.Usuario = "Bienvenido ";
-
-                return View("Index");
-            }
-
-            else
-            {
-                ViewBag.MensajeError = "Error. Porfavor intente denuevo.";
+                ViewBag.MensajeError = "Porfavor llene todos los campos";
                 return View("Login");
             }
+            else
+            {
+                bool Existencia;
 
+                Existencia = Models.BD.Login(Email, Password);
+
+                if (Existencia == true)
+                {
+                    ViewBag.Usuario = "Bienvenido ";
+
+                    return View("Index");
+                }
+
+                else
+                {
+                    ViewBag.MensajeError = "Error. Porfavor intente denuevo.";
+                    return View("Login");
+                }
+            }
         }
 
         [HttpGet]
