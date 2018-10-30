@@ -65,7 +65,7 @@ namespace QEQ_09.Controllers
 
               else
             {
-                ViewBag.MensajeError = "Login incorrecto";
+                ViewBag.MensajeError = "Sus datos son erroneos vuelva a ingresar";
                 return View("Login");
             }
             
