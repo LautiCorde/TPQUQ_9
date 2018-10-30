@@ -50,11 +50,11 @@ namespace QEQ_09.Controllers
 
         [HttpGet]
 
-        public ActionResult AcceptLogin(string Email)
+        public ActionResult AcceptLogin(string Email, string Password)
         {
             bool Existencia;
 
-            Existencia = Models.BD.Login(Email);
+            Existencia = Models.BD.Login(Email,Password);
 
             if (Existencia == true)
             {

@@ -24,7 +24,7 @@ namespace QEQ_09.Models
 
         }
 
-        public static bool  Login (string Email)
+        public static bool  Login (string Email, string Password)
         {
             bool Existencia=false;
             SqlConnection Conexion = Conectar();
