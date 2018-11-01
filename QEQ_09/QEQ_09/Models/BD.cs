@@ -43,5 +43,37 @@ namespace QEQ_09.Models
             return Existencia;
         }
 
+        public static bool BackOfficeLogin(string aEmail, string aPassword)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "ObtenerUsuario";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("@Email", aEmail);
+            consulta.Parameters.AddWithValue("@Password", aPassword);
+            SqlDataReader dataReader = consulta.ExecuteReader();
+            Usuario u = null;
+            if (dataReader.Read())
+            {
+                int idUsuario = Convert.ToInt32(dataReader["idUsuario"]);
+                string NomUsuario = dataReader["NomUsuario"].ToString();
+                bool TipoUsuario = Convert.ToBoolean(dataReader["TipoUsuario"]);
+                string Email = dataReader["Email"].ToString();
+                string Password = dataReader["Passsword"].ToString();
+
+                u = new Usuario(idUsuario, NomUsuario, TipoUsuario, Email, Password);
+            }
+
+            bool adm = false;
+            if (u.TipoUsuario == true)
+            {
+                adm = true;
+            }
+
+            Desconectar(Conexion);
+            return adm;
+        }
+
+
     }
 }

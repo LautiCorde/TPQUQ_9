@@ -87,20 +87,20 @@ namespace QEQ_09.Controllers
             }
             else
             {
-                bool Existencia;
+                bool adm;
 
-                Existencia = Models.BD.Login(Email, Password);
+                adm = Models.BD.Login(Email, Password);
 
-                if (Existencia == true)
+                if (adm == true)
                 {
                     ViewBag.Usuario = "Bienvenido ";
 
-                    return View("Index");
+                    return View("adm");
                 }
 
                 else
                 {
-                    ViewBag.MensajeError = "Error. Porfavor intente denuevo.";
+                    ViewBag.MensajeError = "Error. Usted no es Administrador.";
                     return View("Login");
                 }
             }

@@ -199,6 +199,7 @@
     <Content Include="Views\Home\Instrucciones.cshtml" />
     <Content Include="Views\Home\OlvidarContraseña.cshtml" />
     <Content Include="Views\Home\BackOfficeLogin.cshtml" />
+    <Content Include="Views\Home\adm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
