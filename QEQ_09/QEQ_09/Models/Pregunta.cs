@@ -10,6 +10,9 @@ namespace QEQ_09.Models
         int idPregunta;
         int TipoPregunta;
         int CategoriaPregunta;
-        int 
+
+        public int IdPregunta { get => idPregunta; set => idPregunta = value; }
+        public int TipoPregunta1 { get => TipoPregunta; set => TipoPregunta = value; }
+        public int CategoriaPregunta1 { get => CategoriaPregunta; set => CategoriaPregunta = value; }
     }
 }

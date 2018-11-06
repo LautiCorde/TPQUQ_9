@@ -43,5 +43,78 @@ namespace QEQ_09.Models
             return Existencia;
         }
 
+        private static int InsertarPregunta(Pregunta p)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "InsertarPregunta";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("@pPregunta", p.Pregunta);
+            int NuevaPreg = consulta.ExecuteNonQuery();
+            return NuevaPreg;
+        }
+        private static int ModifcarPregunta(int Id)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "ModificarPregunta";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("@pid", Id);
+            int PreguntaModificada = consulta.ExecuteNonQuery();
+            return PreguntaModificada;
+        }
+        private static bool BorrarPregunta(int Id)
+        {
+            bool Preguntaa = false;
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "EliminarPregunta";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlDataReader dataReader = consulta.ExecuteReader();
+            if (dataReader.Read())
+            {
+                Preguntaa = true;
+            }
+            Desconectar(Conexion);
+            return Preguntaa;
+        }
+        private static int InsertarPersonaje(Personaje p)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "InsertarPregunta";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("@pNombre", p.Nombre);
+            consulta.Parameters.AddWithValue("@Caracteristica", p.Caracteristica);
+            int NuevoPersonaje = consulta.ExecuteNonQuery();
+            return NuevoPersonaje;
+        }
+        private static int ModifcarPersonaje(int Id)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "ModificarPregunta";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("@pid", Id);
+            int PersonajeModificado = consulta.ExecuteNonQuery();
+            return PersonajeModificado;
+        }
+        private static bool BorrarPersonaje(int Id)
+        {
+            bool Personaje = false;
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "EliminarPersonaje";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlDataReader dataReader = consulta.ExecuteReader();
+            if (dataReader.Read())
+            {
+                Personaje = true;
+            }
+            Desconectar(Conexion);
+            return Personaje;
+        }
+
+
     }
 }
