@@ -22,14 +22,7 @@ namespace QEQ_09.Models
             _Password = pass;
         }
 
-        public Usuario()
-        {
-            _idUsuario = 0;
-            _NomUsuario = "";
-            _TipoUsuario = 0;
-            _Email = "";
-            _Password = "";
-        }
+       
 
         public int IdUsuario { get => _idUsuario; set => _idUsuario = value; }
         public string NomUsuario { get => _NomUsuario; set => _NomUsuario = value; }
