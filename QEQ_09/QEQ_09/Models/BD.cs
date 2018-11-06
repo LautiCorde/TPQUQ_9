@@ -64,7 +64,7 @@ namespace QEQ_09.Models
             return PreguntaModificada;
         }
         private static bool BorrarPregunta(int Id)
-        {
+        {//
             bool Preguntaa = false;
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
