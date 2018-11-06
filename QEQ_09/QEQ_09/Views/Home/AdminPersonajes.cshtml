@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "AdminPersonajes";
+}
+
+<h2>AdminPersonajes</h2>
+
+<table style="width:100%">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+    </tr>
+    @foreach (QEQ_09.Models.Usuario u in Usuarios)
+    {
+        <tr>
+            <td>@u.IdUsuario</td>
+            <td>@u.NomUsuario</td>
+            <td>@u.Email</td>
+        </tr>
+    }
+</table>

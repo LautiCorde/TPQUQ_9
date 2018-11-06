@@ -48,6 +48,19 @@ namespace QEQ_09.Controllers
         }
 
 
+
+
+        public ActionResult AdminUsuario()
+        {
+
+
+
+            return View();
+        }
+
+
+
+
         [HttpGet]
 
         public ActionResult AcceptLogin(string Email, string Password)

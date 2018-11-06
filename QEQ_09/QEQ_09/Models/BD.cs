@@ -24,6 +24,37 @@ namespace QEQ_09.Models
 
         }
 
+
+        public static List<Usuario> ListarUsuarios()
+        {
+            List<Usuario> aux3 = new List<Usuario>();
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "ListarUsuarios";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlDataReader dataReader = consulta.ExecuteReader();
+            while (dataReader.Read())
+            {
+                int idUsuario = Convert.ToInt32(dataReader["idUsuario"]);
+                string Nombre = Convert.ToString(dataReader["Nombre"]);
+                bool Tipo = Convert.ToBoolean(dataReader["Tipo"]);
+                string Email = Convert.ToString(dataReader["Email"]);
+                string Password = Convert.ToString(dataReader["Password"]);
+
+                Usuario u = new Usuario(idUsuario, Nombre, Tipo, Email, Password);
+                aux3.Add(u);
+
+            }
+
+
+            Desconectar(Conexion);
+            return aux3;
+
+        }
+
+
+
+
         public static bool  Login (string Email, string Password)
         {
             bool Existencia=false;
