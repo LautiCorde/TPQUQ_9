@@ -7,12 +7,14 @@ namespace QEQ_09.Models
 {
     public class Pregunta
     {
-        int idPregunta;
-        int TipoPregunta;
-        int CategoriaPregunta;
+        int _idPregunta;
+        string _Preguntaa;
+        int _TipoPregunta;
+        int _CategoriaPregunta;
 
-        public int IdPregunta { get => idPregunta; set => idPregunta = value; }
-        public int TipoPregunta1 { get => TipoPregunta; set => TipoPregunta = value; }
-        public int CategoriaPregunta1 { get => CategoriaPregunta; set => CategoriaPregunta = value; }
+        public int IdPregunta { get => _idPregunta; set => _idPregunta = value; }
+        public string Preguntaa { get => _Preguntaa; set => _Preguntaa = value; }
+        public int TipoPregunta { get => _TipoPregunta; set => _TipoPregunta = value; }
+        public int CategoriaPregunta { get => _CategoriaPregunta; set => _CategoriaPregunta = value; }
     }
 }
