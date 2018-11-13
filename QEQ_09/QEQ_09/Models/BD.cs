@@ -77,6 +77,56 @@ namespace QEQ_09.Models
 
         }
 
+        public static Personaje ObtenerPersonaje(int id)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "ObtenerPersonaje";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("pId", id);
+            SqlDataReader dataReader = consulta.ExecuteReader();
+            Personaje p = new Personaje();
+            while (dataReader.Read())
+            {
+                int idPersonaje = Convert.ToInt32(dataReader["idPersonaje"]);
+                string Nombre = Convert.ToString(dataReader["Nombre"]);
+                int Fk_Categoria = Convert.ToInt32(dataReader["Fk_Categoria"]);
+
+                p = new Personaje(idPersonaje, Nombre, Fk_Categoria);
+            }
+            Desconectar(Conexion);
+            return p;
+
+        }
+
+
+
+
+
+        public static List<Pregunta> ListarPreguntas()
+        {
+            List<Pregunta> aux5 = new List<Pregunta>();
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "ListarPregunta";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlDataReader dataReader = consulta.ExecuteReader();
+            while (dataReader.Read())
+            {
+                int idPregunta = Convert.ToInt32(dataReader["idPregunta"]);
+                string Pregunta = Convert.ToString(dataReader["Pregunta"]);
+                Pregunta p = new Pregunta (idPregunta, Pregunta);
+                aux5.Add(p);
+
+            }
+
+
+            Desconectar(Conexion);
+            return aux5;
+
+        }
+
+
 
 
 
@@ -133,16 +183,17 @@ namespace QEQ_09.Models
         }
 
 
-        private static int InsertarPregunta(Pregunta p)
+       /* private static int InsertarPregunta(Pregunta p)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
             consulta.CommandText = "InsertarPregunta";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            consulta.Parameters.AddWithValue("@pPregunta", p.Preguntaa);
+            consulta.Parameters.AddWithValue("@pPregunta", p.Pregunta);
             int NuevaPreg = consulta.ExecuteNonQuery();
             return NuevaPreg;
         }
+        */
         private static int ModifcarPregunta(int Id)
         {
             SqlConnection Conexion = Conectar();
@@ -179,15 +230,15 @@ namespace QEQ_09.Models
             int NuevoPersonaje = consulta.ExecuteNonQuery();
             return NuevoPersonaje;
         }
-        public static int ModifcarPersonaje(int Id, string Nombre, int fkCategoria)
+        public static int ModifcarPersonaje(Personaje x)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
             consulta.CommandText = "ModificarPersonaje";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            consulta.Parameters.AddWithValue("@pid", Id);
-            consulta.Parameters.AddWithValue("@pNombre", Nombre);
-            consulta.Parameters.AddWithValue("@pCategoria", fkCategoria);
+            consulta.Parameters.AddWithValue("@pid", x.IdPersonaje);
+            consulta.Parameters.AddWithValue("@pNombre", x.Nombre1);
+            consulta.Parameters.AddWithValue("@pCategoria", x.Fk_Categoria);
             int PersonajeModificado = consulta.ExecuteNonQuery();
             return PersonajeModificado;
         }
@@ -198,6 +249,7 @@ namespace QEQ_09.Models
             SqlCommand consulta = Conexion.CreateCommand();
             consulta.CommandText = "EliminarPersonaje";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("@pid", Id);
             SqlDataReader dataReader = consulta.ExecuteReader();
             if (dataReader.Read())
             {
@@ -207,7 +259,7 @@ namespace QEQ_09.Models
             return Personaje;
         }
 
-        private static int InsertarCatPersonaje(CategoriaPersonaje c)
+       /* private static int InsertarCatPersonaje(CategoriaPersonaje c)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
@@ -217,6 +269,7 @@ namespace QEQ_09.Models
             int NuevaCategoria = consulta.ExecuteNonQuery();
             return NuevaCategoria;
         }
+        */
 
         private static int ModifcarCatPersonaje(int idCatPer)
         {

@@ -207,6 +207,7 @@
     <Content Include="Views\Home\AdminPersonajes.cshtml" />
     <Content Include="Views\Home\EditarPersonaje.cshtml" />
     <Content Include="Views\Home\InsertarPersonaje.cshtml" />
+    <Content Include="Views\Home\AdministrarPreguntas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

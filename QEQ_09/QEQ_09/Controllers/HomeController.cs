@@ -133,6 +133,12 @@ namespace QEQ_09.Controllers
             return View();
         }
 
+        public ActionResult AdministrarPreguntas()
+        {
+            ViewBag.Pregunta = BD.ListarPreguntas();
+            return View();
+        }
+
         public ActionResult EditarPersonaje()
         {
             return View();
@@ -143,7 +149,7 @@ namespace QEQ_09.Controllers
             return View();
         }
 
-        public ActionResult AMPersonaje(string Accion, int id, string Nombre, int Categoria)
+        public ActionResult AMPersonaje(string Accion, int id)
         {
             if (Accion == "Agregar")
             {
@@ -151,10 +157,8 @@ namespace QEQ_09.Controllers
             }
             else if (Accion == "Modificar")
             {
-                ViewBag.id = id;
-                ViewBag.Nombre = Nombre;
-                ViewBag.Categoria = Categoria;
-                return View("EditarPersonaje");
+                Personaje x = BD.ObtenerPersonaje(id);
+                return View("EditarPersonaje",x);
             }
             else if (Accion == "Eliminar")
             {
@@ -165,9 +169,9 @@ namespace QEQ_09.Controllers
         }
 
         [HttpPost]
-        public ActionResult GuardarPersonaje(int id, string Nombre, int fkCategoria)
+        public ActionResult GuardarPersonaje(Personaje x)
         {
-            BD.ModifcarPersonaje(id, Nombre, fkCategoria);
+            BD.ModifcarPersonaje(x);
             return RedirectToAction("AdminPersonajes");
         }
 

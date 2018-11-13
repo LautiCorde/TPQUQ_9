@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "AdminPreguntas";
+}
+
+<h2>AdminPersonajes</h2>
+
+<table style="width:100%">
+    <tr>
+        <th>IdPregunta</th>
+        <th>Pregunta</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+    @foreach (QEQ_09.Models.Pregunta p in ViewBag.Pregunta)
+    {
+        <tr>
+          
+            <td>@p.Preguntas</td>
+           
+            <td>@Html.ActionLink("Editar Pregunta", "AMPregunta", "Home", new { Accion = "Modificar", Id = p.IdPregunta, Pregunta = p.Preguntas}, null)</td>
+            <td>@Html.ActionLink("Eliminar Pregunta", "AMPregunta", "Home", new { Accion = "Eliminar", Id = p.IdPregunta }, null)</td>
+        </tr>
+
+
+
+    }
+</table>
+
+<td>@Html.ActionLink("Agregar Pregunta Nueva", "AMPregunta", "Home", new { Accion = "Agregar", Id = -1, Pregunta = "", CategoriaPregunta = 0, TipoPregunta=0 }, null)</td>

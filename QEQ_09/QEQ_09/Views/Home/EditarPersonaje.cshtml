@@ -1,4 +1,5 @@
-﻿
+﻿@using QEQ_09.Models
+@model Personaje
 @{
     ViewBag.Title = "EditarPersonaje";
 }
@@ -6,8 +7,8 @@
 <h2>EditarPersonaje</h2>
 
 <form action="@Url.Action("GuardarPersonaje","Home")" method="post">
-    Nombre <input type="text" name="Nombre" value="@ViewBag.Nombre" /><br />
-    fkCategoria <input type="text" name="fkCategoria" value="@ViewBag.Categoria" /><br />
-    <input type="hidden" value="@ViewBag.id" name="id" />
+    Nombre @Html.TextBoxFor(x => x.Nombre1)<br />
+    fkCategoria @Html.TextBoxFor(x => x.Fk_Categoria)<br /><br />
+    @Html.HiddenFor(x => x.IdPersonaje)<br />
     <input id="submit" type="submit" value="Guardar" />
 </form>
