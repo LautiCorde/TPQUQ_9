@@ -81,9 +81,9 @@ namespace QEQ_09.Models
 
 
 
-        public static bool  Login (string Email, string Password)
+        public static bool Login(string Email, string Password)
         {
-            bool Existencia=false;
+            bool Existencia = false;
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
             consulta.CommandText = "ObtenerUsuario";
@@ -93,7 +93,7 @@ namespace QEQ_09.Models
             SqlDataReader dataReader = consulta.ExecuteReader();
             if (dataReader.Read())
             {
-                Existencia = true; 
+                Existencia = true;
             }
 
             Desconectar(Conexion);
@@ -119,7 +119,7 @@ namespace QEQ_09.Models
                 string Email = dataReader["Email"].ToString();
                 string Password = dataReader["Passsword"].ToString();
 
-                
+
 
                 u = new Usuario(idUsuario, NomUsuario, TipoUsuario, Email, Password);
             }
@@ -207,6 +207,27 @@ namespace QEQ_09.Models
             return Personaje;
         }
 
+        private static int InsertarCatPersonaje(CategoriaPersonaje c)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "InsertarCategoriaPersonajes";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("@CatPer", c.CatPer);
+            int NuevaCategoria = consulta.ExecuteNonQuery();
+            return NuevaCategoria;
+        }
 
+        private static int ModifcarCatPersonaje(int idCatPer)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "ModificarCategoriaPersonajes";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("@pidCatPer", idCatPer);
+            int CategoriaModificada = consulta.ExecuteNonQuery();
+            return CategoriaModificada;
+
+        }
     }
 }
