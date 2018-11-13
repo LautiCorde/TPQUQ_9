@@ -168,28 +168,30 @@ namespace QEQ_09.Models
             Desconectar(Conexion);
             return Preguntaa;
         }
-        private static int InsertarPersonaje(Personaje p)
+        public static int InsertarPersonaje(Personaje p)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
-            consulta.CommandText = "InsertarPregunta";
+            consulta.CommandText = "InsertarPersonaje";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
             consulta.Parameters.AddWithValue("@pNombre", p.Nombre1);
-            consulta.Parameters.AddWithValue("@fk_Categoria", p.Fk_Categoria);
+            consulta.Parameters.AddWithValue("@Caracteristica", p.Fk_Categoria);
             int NuevoPersonaje = consulta.ExecuteNonQuery();
             return NuevoPersonaje;
         }
-        private static int ModifcarPersonaje(int Id)
+        public static int ModifcarPersonaje(int Id, string Nombre, int fkCategoria)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
-            consulta.CommandText = "ModificarPregunta";
+            consulta.CommandText = "ModificarPersonaje";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
             consulta.Parameters.AddWithValue("@pid", Id);
+            consulta.Parameters.AddWithValue("@pNombre", Nombre);
+            consulta.Parameters.AddWithValue("@pCategoria", fkCategoria);
             int PersonajeModificado = consulta.ExecuteNonQuery();
             return PersonajeModificado;
         }
-        private static bool BorrarPersonaje(int Id)
+        public static bool BorrarPersonaje(int Id)
         {
             bool Personaje = false;
             SqlConnection Conexion = Conectar();

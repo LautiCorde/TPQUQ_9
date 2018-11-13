@@ -131,10 +131,51 @@ namespace QEQ_09.Controllers
         {
             ViewBag.Personaje = BD.ListarPersonajes();
             return View();
-
         }
 
+        public ActionResult EditarPersonaje()
+        {
+            return View();
+        }
 
+        public ActionResult InsertarPersonaje()
+        {
+            return View();
+        }
 
+        public ActionResult AMPersonaje(string Accion, int id, string Nombre, int Categoria)
+        {
+            if (Accion == "Agregar")
+            {
+                return RedirectToAction("InsertarPersonaje");
+            }
+            else if (Accion == "Modificar")
+            {
+                ViewBag.id = id;
+                ViewBag.Nombre = Nombre;
+                ViewBag.Categoria = Categoria;
+                return View("EditarPersonaje");
+            }
+            else if (Accion == "Eliminar")
+            {
+                BD.BorrarPersonaje(id);
+                return RedirectToAction("AdminPersonajes");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult GuardarPersonaje(int id, string Nombre, int fkCategoria)
+        {
+            BD.ModifcarPersonaje(id, Nombre, fkCategoria);
+            return RedirectToAction("AdminPersonajes");
+        }
+
+        [HttpPost]
+        public ActionResult AnadirPersonaje(string Nombre, int fkCategoria)
+        {
+            BD.InsertarPersonaje(new Personaje(-1, Nombre, fkCategoria));
+            return RedirectToAction("AdminPersonajes");
+        }
     }
 }

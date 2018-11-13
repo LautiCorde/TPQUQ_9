@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "EditarPersonaje";
+}
+
+<h2>EditarPersonaje</h2>
+
+<form action="@Url.Action("GuardarPersonaje","Home")" method="post">
+    Nombre <input type="text" name="Nombre" value="@ViewBag.Nombre" /><br />
+    fkCategoria <input type="text" name="fkCategoria" value="@ViewBag.Categoria" /><br />
+    <input type="hidden" value="@ViewBag.id" name="id" />
+    <input id="submit" type="submit" value="Guardar" />
+</form>

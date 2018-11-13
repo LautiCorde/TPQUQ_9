@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "InsertarPersonaje";
+}
+
+<h2>InsertarPersonaje</h2>
+
+<form action="@Url.Action("AnadirPersonaje","Home")" method="post">
+    Nombre <input type="text" name="Nombre" /><br />
+    fkCategoria <input type="text" name="fkCategoria" /><br />
+    <input id="submit" type="submit" value="Insertar" />
+</form>
