@@ -9,14 +9,14 @@
     <tr>
         <th>ID</th>
         <th>Nombre</th>
-        <th>Email</th>
+        <th>Categoria</th>
     </tr>
-    @foreach (QEQ_09.Models.Usuario u in Usuarios)
+    @foreach (QEQ_09.Models.Personaje p in ViewBag.Personaje)
     {
         <tr>
-            <td>@u.IdUsuario</td>
-            <td>@u.NomUsuario</td>
-            <td>@u.Email</td>
+            <td>@p.IdPersonaje</td>
+            <td>@p.Nombre1</td>
+            <td>@p.Fk_Categoria</td>
         </tr>
     }
 </table>
