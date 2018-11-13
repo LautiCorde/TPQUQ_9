@@ -181,5 +181,39 @@ namespace QEQ_09.Controllers
             BD.InsertarPersonaje(new Personaje(-1, Nombre, fkCategoria));
             return RedirectToAction("AdminPersonajes");
         }
+
+
+        public ActionResult AMPregunta(string Accion, int id)
+        {
+            if (Accion == "Agregar")
+            {
+                return RedirectToAction("InsertarPregunta");
+            }
+            else if (Accion == "Modificar")
+            {
+                Personaje x = BD.ObtenerPersonaje(id);
+                return View("EditarPregunta", x);
+            }
+            else if (Accion == "Eliminar")
+            {
+                BD.BorrarPregunta(id);
+                return RedirectToAction("AdminPregunta");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult GuardarPregunta(Pregunta x)
+        {
+            BD.ModifcarPregunta(x);
+            return RedirectToAction("AdminPregunta");
+        }
+
+        [HttpPost]
+        public ActionResult AnadirPregunta(int idPregunta, string Preguntas)
+        {
+            BD.InsertarPregunta(new Pregunta(-1, Preguntas));
+            return RedirectToAction("AdminPreguntas");
+        }
     }
 }

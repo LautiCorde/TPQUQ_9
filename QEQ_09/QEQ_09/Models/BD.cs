@@ -103,6 +103,8 @@ namespace QEQ_09.Models
 
 
 
+
+
         public static List<Pregunta> ListarPreguntas()
         {
             List<Pregunta> aux5 = new List<Pregunta>();
@@ -128,6 +130,27 @@ namespace QEQ_09.Models
 
 
 
+
+        public static Personaje ObtenerPregunta(int id)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "ObtenerPregunta";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("pidPreg", id);
+            SqlDataReader dataReader = consulta.ExecuteReader();
+            Pregunta p = new Pregunta();
+            while (dataReader.Read())
+            {
+                int idPregunta = Convert.ToInt32(dataReader["idPregunta"]);
+                string Preguntas = Convert.ToString(dataReader["Preguntas"]);
+
+                p = new Pregunta(idPregunta, Preguntas);
+            }
+            Desconectar(Conexion);
+            return p;
+
+        }
 
 
 
@@ -183,18 +206,18 @@ namespace QEQ_09.Models
         }
 
 
-       /* private static int InsertarPregunta(Pregunta p)
+       public static int InsertarPregunta(Pregunta p)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
             consulta.CommandText = "InsertarPregunta";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            consulta.Parameters.AddWithValue("@pPregunta", p.Pregunta);
+            consulta.Parameters.AddWithValue("@pPregunta", p.Preguntas);
             int NuevaPreg = consulta.ExecuteNonQuery();
             return NuevaPreg;
         }
-        */
-        private static int ModifcarPregunta(int Id)
+        
+        public static int ModifcarPregunta(int Id)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
@@ -204,7 +227,7 @@ namespace QEQ_09.Models
             int PreguntaModificada = consulta.ExecuteNonQuery();
             return PreguntaModificada;
         }
-        private static bool BorrarPregunta(int Id)
+        public static bool BorrarPregunta(int Id)
         {
             bool Preguntaa = false;
             SqlConnection Conexion = Conectar();
