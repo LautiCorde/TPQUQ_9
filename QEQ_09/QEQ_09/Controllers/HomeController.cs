@@ -127,6 +127,14 @@ namespace QEQ_09.Controllers
         }
 
 
+        public ActionResult AdminPersonajes()
+        {
+            ViewBag.Personaje = BD.ListarPersonajes();
+            return View();
+
+        }
+
+
 
     }
 }
