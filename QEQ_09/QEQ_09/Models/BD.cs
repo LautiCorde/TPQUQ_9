@@ -131,7 +131,7 @@ namespace QEQ_09.Models
 
 
 
-        public static Personaje ObtenerPregunta(int id)
+        public static Pregunta ObtenerPregunta(int id)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
@@ -139,7 +139,7 @@ namespace QEQ_09.Models
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
             consulta.Parameters.AddWithValue("pidPreg", id);
             SqlDataReader dataReader = consulta.ExecuteReader();
-            Pregunta p = new Pregunta();
+            Pregunta p = null;
             while (dataReader.Read())
             {
                 int idPregunta = Convert.ToInt32(dataReader["idPregunta"]);
@@ -282,7 +282,7 @@ namespace QEQ_09.Models
             return Personaje;
         }
 
-        public static List<CategoriaPersonaje> ListarCategoriaPersonaje()
+        /*public static List<CategoriaPersonaje> ListarCategoriaPersonaje()
         {
             List<CatergoriaPersonaje> aux3 = new List<CategoriaPersonaje>();
             SqlConnection Conexion = Conectar();
@@ -300,14 +300,15 @@ namespace QEQ_09.Models
                 aux3.Add(p);
 
             }
-
+           
 
             Desconectar(Conexion);
             return aux3;
 
         }
+         */
 
-        private static int InsertarCatPersonaje(CategoriaPersonaje c)
+      /*  private static int InsertarCatPersonaje(CategoriaPersonaje c)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
@@ -317,6 +318,8 @@ namespace QEQ_09.Models
             int NuevaCategoria = consulta.ExecuteNonQuery();
             return NuevaCategoria;
         }
+
+    */
        
 
         private static int ModifcarCatPersonaje(int idCatPer)

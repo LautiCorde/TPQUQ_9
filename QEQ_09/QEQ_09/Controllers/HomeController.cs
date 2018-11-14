@@ -191,8 +191,8 @@ namespace QEQ_09.Controllers
             }
             else if (Accion == "Modificar")
             {
-                Personaje x = BD.ObtenerPersonaje(id);
-                return View("EditarPregunta", x);
+                Personaje p= BD.ObtenerPersonaje(id);
+                return View("EditarPregunta", p);
             }
             else if (Accion == "Eliminar")
             {
@@ -203,9 +203,9 @@ namespace QEQ_09.Controllers
         }
 
         [HttpPost]
-        public ActionResult GuardarPregunta(Pregunta x)
+        public ActionResult GuardarPregunta(Pregunta p)
         {
-            BD.ModifcarPregunta(x);
+            BD.ModifcarPregunta(p.IdPregunta);
             return RedirectToAction("AdminPregunta");
         }
 
