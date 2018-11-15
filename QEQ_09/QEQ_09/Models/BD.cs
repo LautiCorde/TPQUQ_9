@@ -285,7 +285,7 @@ namespace QEQ_09.Models
             return Personaje;
         }
 
-        public static List<CategoriaPersonaje> ListarCategoriaPersonaje()
+       /* public static List<CategoriaPersonaje> ListarCategoriaPersonaje()
         {
             List<CatergoriaPersonaje> aux3 = new List<CategoriaPersonaje>();
             SqlConnection Conexion = Conectar();
@@ -322,6 +322,7 @@ namespace QEQ_09.Models
             return NuevaCategoria;
         }
 
+    */
     
        
 

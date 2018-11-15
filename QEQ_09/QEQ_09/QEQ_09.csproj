@@ -208,6 +208,8 @@
     <Content Include="Views\Home\EditarPersonaje.cshtml" />
     <Content Include="Views\Home\InsertarPersonaje.cshtml" />
     <Content Include="Views\Home\AdministrarPreguntas.cshtml" />
+    <Content Include="Views\Home\InsertarPregunta.cshtml" />
+    <Content Include="Views\EditarPregunta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

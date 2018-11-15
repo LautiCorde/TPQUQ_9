@@ -3,28 +3,21 @@
     ViewBag.Title = "AdminPreguntas";
 }
 
-<h2>AdminPersonajes</h2>
+<h2>AdminpREGUNTAS</h2>
 
 <table style="width:100%">
     <tr>
-        <th>ID</th>
         <th>Pregunta</th>
-        <th>IDCat</th>
         <th>Editar</th>
         <th>Eliminar</th>
     </tr>
     @foreach (QEQ_09.Models.Pregunta p in ViewBag.Pregunta)
     {
         <tr>
-          
             <td>@p.Preguntas</td>
-           
             <td>@Html.ActionLink("Editar Pregunta", "AMPregunta", "Home", new { Accion = "Modificar", Id = p.IdPregunta, Pregunta = p.Preguntas}, null)</td>
             <td>@Html.ActionLink("Eliminar Pregunta", "AMPregunta", "Home", new { Accion = "Eliminar", Id = p.IdPregunta }, null)</td>
         </tr>
-
-
-
     }
 </table>
 

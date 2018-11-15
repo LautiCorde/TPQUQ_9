@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "InsertarPregunta";
+}
+
+<h2>InsertarPregunta</h2>
+
+<form action="@Url.Action("InsertarPregunta","Home")" method="post">
+    Pregunta <input type="text" name="Pregunta" /><br />
+    idCategoria <input type="text" name="idCategoria" /><br />
+    <input id="submit" type="submit" value="Insertar" />
+</form>

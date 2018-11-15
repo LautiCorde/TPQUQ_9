@@ -15,6 +15,11 @@ namespace QEQ_09.Controllers
             return View();
         }
 
+        public ActionResult InsertarPregunta()
+        {
+           return View();
+        }
+
         public ActionResult Aboutus()
         {
             ViewBag.Message = "Este juego fue hecho, diseñado y administrado(?) por Lauti Cordero, Juli Demaria y Mateo Laniado en [Octubre - Noviembre 2018] en las materias de Programación y Bases de Datos en el secundario Ort Almagro Argentina.";
@@ -174,7 +179,7 @@ namespace QEQ_09.Controllers
             else if (Accion == "Eliminar")
             {
                 BD.BorrarPregunta(id);
-                return RedirectToAction("AdminPregunta");
+                return RedirectToAction("AdministrarPreguntas");
             }
             return View();
         }
@@ -185,12 +190,12 @@ namespace QEQ_09.Controllers
             BD.ModifcarPregunta(p.IdPregunta);
             return RedirectToAction("AdminPregunta");
         }
-        /*
+        
         [HttpPost]
-        public ActionResult AnadirPregunta(int idPregunta, string Preguntas)
+        public ActionResult InsertarPregunta(int idPregunta, string Preguntas, int idCategoria)
         {
-            BD.InsertarPregunta(new Pregunta(-1, Preguntas, ));
+            BD.InsertarPregunta(new Pregunta(-1, Preguntas, idCategoria));
             return RedirectToAction("AdminPreguntas");
-        }*/
+        }
     }
 }
