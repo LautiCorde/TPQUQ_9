@@ -9,20 +9,20 @@ namespace QEQ_09.Models
     {
         int _idPregunta;
         string _Preguntas;
-        int _idCat;
+        int _idCategoria;
 
         public Pregunta(int id, string pre, int idCat)
         {
             _idPregunta = id;
             _Preguntas = pre;
-            _idCat = idCat;
+            _idCategoria = idCat;
         }
 
         public Pregunta() { }
 
         public int IdPregunta { get => _idPregunta; set => _idPregunta = value; }
+        public int IdCategoria { get => _idCategoria; set => _idCategoria = value; }
         public string Preguntas { get => _Preguntas; set => _Preguntas = value; }
-        public int idCat { get => _idCat; set => _idCat = value; }
 
     }
 }
