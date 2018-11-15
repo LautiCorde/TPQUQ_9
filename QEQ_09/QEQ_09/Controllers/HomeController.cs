@@ -185,12 +185,12 @@ namespace QEQ_09.Controllers
             BD.ModifcarPregunta(p.IdPregunta);
             return RedirectToAction("AdminPregunta");
         }
-
+        /*
         [HttpPost]
         public ActionResult AnadirPregunta(int idPregunta, string Preguntas)
         {
-            BD.InsertarPregunta(new Pregunta(-1, Preguntas));
+            BD.InsertarPregunta(new Pregunta(-1, Preguntas, ));
             return RedirectToAction("AdminPreguntas");
-        }
+        }*/
     }
 }
