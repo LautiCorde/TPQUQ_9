@@ -17,9 +17,7 @@ namespace QEQ_09.Models
             Nombre = nom;
             fk_Categoria = fkcat;
         }
-        public Personaje()
-        {
-        }
+        public Personaje() { }
 
         public int IdPersonaje { get => idPersonaje; set => idPersonaje = value; }
         public string Nombre1 { get => Nombre; set => Nombre = value; }
