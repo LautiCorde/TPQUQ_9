@@ -39,30 +39,18 @@ namespace QEQ_09.Controllers
             return View();
         }
 
-
         [HttpGet]
-
         public ActionResult Login()
         {
             return View();
         }
 
-
-
-
         public ActionResult AdminUsuario()
         {
-
-
-
             return View();
         }
 
-
-
-
         [HttpGet]
-
         public ActionResult AcceptLogin(string Email, string Password)
         {
             if (Email == "" || Password == "")
@@ -73,16 +61,12 @@ namespace QEQ_09.Controllers
             else
             {
                 bool Existencia;
-
                 Existencia = Models.BD.Login(Email, Password);
-
                 if (Existencia == true)
                 {
                     ViewBag.Usuario = "Bienvenido ";
-
                     return View("Index");
                 }
-
                 else
                 {
                     ViewBag.MensajeError = "Error. Porfavor intente denuevo.";
@@ -101,16 +85,12 @@ namespace QEQ_09.Controllers
             else
             {
                 bool adm;
-
                 adm = Models.BD.Login(Email, Password);
-
                 if (adm == true)
                 {
                     ViewBag.Usuario = "Bienvenido ";
-
                     return View("adm");
                 }
-
                 else
                 {
                     ViewBag.MensajeError = "Error. Usted no es Administrador.";
@@ -120,12 +100,10 @@ namespace QEQ_09.Controllers
         }
 
         [HttpGet]
-
         public ActionResult BackOfficeLogin()
         {
             return View();
         }
-
 
         public ActionResult AdminPersonajes()
         {
@@ -181,7 +159,6 @@ namespace QEQ_09.Controllers
             BD.InsertarPersonaje(new Personaje(-1, Nombre, fkCategoria));
             return RedirectToAction("AdminPersonajes");
         }
-
 
         public ActionResult AMPregunta(string Accion, int id)
         {
