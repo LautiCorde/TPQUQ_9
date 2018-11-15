@@ -11,11 +11,11 @@ namespace QEQ_09.Models
         string _Preguntas;
         int _idCategoria;
 
-        public Pregunta(int id, string pre, int idCategoria)
+        public Pregunta(int id, string pre, int idCa)
         {
             _idPregunta = id;
             _Preguntas = pre;
-            _idCategoria = idCategoria;
+            _idCategoria = idCa;
         }
 
         public Pregunta() { }
