@@ -110,7 +110,7 @@ namespace QEQ_09.Models
             List<Pregunta> aux5 = new List<Pregunta>();
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
-            consulta.CommandText = "ListarPregunta";
+            consulta.CommandText = "ListarPreguntas";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
             SqlDataReader dataReader = consulta.ExecuteReader();
             while (dataReader.Read())
