@@ -145,7 +145,9 @@ namespace QEQ_09.Models
                 int idPregunta = Convert.ToInt32(dataReader["idPregunta"]);
                 string Preguntas = Convert.ToString(dataReader["Preguntas"]);
 
-                p = new Pregunta(idPregunta, Preguntas);
+                int idCategoria = Convert.ToInt32(dataReader["idCategoria"]);
+
+                p = new Pregunta(idPregunta, Preguntas,idCategoria);
             }
             Desconectar(Conexion);
             return p;
@@ -213,6 +215,7 @@ namespace QEQ_09.Models
             consulta.CommandText = "InsertarPregunta";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
             consulta.Parameters.AddWithValue("@pPregunta", p.Preguntas);
+            consulta.Parameters.AddWithValue("@idCategoria", p.idCategoria);
             int NuevaPreg = consulta.ExecuteNonQuery();
             return NuevaPreg;
         }
@@ -234,6 +237,7 @@ namespace QEQ_09.Models
             SqlCommand consulta = Conexion.CreateCommand();
             consulta.CommandText = "EliminarPregunta";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("@pId", Id);
             SqlDataReader dataReader = consulta.ExecuteReader();
             if (dataReader.Read())
             {
