@@ -117,8 +117,8 @@ namespace QEQ_09.Models
             {
                 int idPregunta = Convert.ToInt32(dataReader["idPregunta"]);
                 string Pregunta = Convert.ToString(dataReader["Pregunta"]);
-                int idCat = Convert.ToInt32(dataReader["idCat"]);
-                Pregunta p = new Pregunta (idPregunta, Pregunta, idCat);
+                int idCategoria = Convert.ToInt32(dataReader["idCategoria"]);
+                Pregunta p = new Pregunta (idPregunta, Pregunta, idCategoria);
                 aux5.Add(p);
 
             }
