@@ -23,6 +23,6 @@ namespace QEQ_09.Models
         public int IdPregunta { get => _idPregunta; set => _idPregunta = value; }
         public int IdCategoria { get => _idCategoria; set => _idCategoria = value; }
         public string Preguntas { get => _Preguntas; set => _Preguntas = value; }
-   
+
     }
 }
