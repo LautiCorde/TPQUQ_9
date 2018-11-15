@@ -285,7 +285,7 @@ namespace QEQ_09.Models
             return Personaje;
         }
 
-        /*public static List<CategoriaPersonaje> ListarCategoriaPersonaje()
+        public static List<CategoriaPersonaje> ListarCategoriaPersonaje()
         {
             List<CatergoriaPersonaje> aux3 = new List<CategoriaPersonaje>();
             SqlConnection Conexion = Conectar();
@@ -309,9 +309,9 @@ namespace QEQ_09.Models
             return aux3;
 
         }
-         */
+         
 
-      /*  private static int InsertarCatPersonaje(CategoriaPersonaje c)
+       private static int InsertarCatPersonaje(CategoriaPersonaje c)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
@@ -322,7 +322,7 @@ namespace QEQ_09.Models
             return NuevaCategoria;
         }
 
-    */
+    
        
 
         private static int ModifcarCatPersonaje(int idCatPer)
