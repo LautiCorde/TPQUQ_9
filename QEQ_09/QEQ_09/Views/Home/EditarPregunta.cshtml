@@ -1,0 +1,16 @@
+﻿@using QEQ_09.Models
+
+@model Pregunta
+
+@{
+    ViewBag.Title = "EditarPregunta";
+}
+
+<h2>EditarPregunta</h2>
+
+<form action="@Url.Action("GuardarPregunta","Home")" method="post">
+    Pregunta @Html.TextBoxFor(p => p.Preguntas)<br />
+    idCategoria @Html.TextBoxFor(p => p.IdCategoria)<br /><br />
+    @Html.HiddenFor(p => p.IdPregunta)<br />
+    <input id="submit" type="submit" value="Guardar" />
+</form>

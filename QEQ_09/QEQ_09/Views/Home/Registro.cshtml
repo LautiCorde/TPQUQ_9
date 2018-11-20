@@ -2,8 +2,21 @@
     ViewBag.Title = "Registro";
 }
 
-<h2>Registro</h2>
-<ul>
-    c
 
-</ul>
+<form action="@Url.Action("Registrarse", "Home")" method="post">
+
+    <label style="color: blueviolet">Password</label><br />
+    <input type="password" name="Password" /> <br />
+
+    <label style="color: blueviolet">Mail</label> <br />
+    <input type="text" name="Mail" /> <br />
+
+    <label style="color: blueviolet">Nombre do usuario</label><br />
+    <input type="NomUsuario" name="NomUsuario" /><br />
+
+    <label style="color: blueviolet">Tipo</label><br />
+    <input type="Tipo" name="Tipo" /><br />
+
+
+    <input type="submit" name="enviar" value="Registrese" />
+</form>

@@ -144,7 +144,7 @@ namespace QEQ_09.Models
             while (dataReader.Read())
             {
                 int idPregunta = Convert.ToInt32(dataReader["idPregunta"]);
-                string Preguntas = Convert.ToString(dataReader["Preguntas"]);
+                string Preguntas = Convert.ToString(dataReader["Pregunta"]);
                 int idCategoria = Convert.ToInt32(dataReader["idCategoria"]);
                 p = new Pregunta(idPregunta, Preguntas,idCategoria);
             }
@@ -213,21 +213,22 @@ namespace QEQ_09.Models
             SqlCommand consulta = Conexion.CreateCommand();
             consulta.CommandText = "InsertarPregunta";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            consulta.Parameters.AddWithValue("@pPregunta", p.Preguntas);
-            consulta.Parameters.AddWithValue("@idCategoria", p.IdCategoria);
+            consulta.Parameters.AddWithValue("@pPreg", p.Preguntas);
+            consulta.Parameters.AddWithValue("@idCat", p.IdCategoria);
             int NuevaPreg = consulta.ExecuteNonQuery();
             return NuevaPreg;
         }
-        
-        public static int ModifcarPregunta(int Id)
+
+        public static void ModifcarPregunta(Pregunta p)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
             consulta.CommandText = "ModificarPregunta";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            consulta.Parameters.AddWithValue("@pid", Id);
-            int PreguntaModificada = consulta.ExecuteNonQuery();
-            return PreguntaModificada;
+            consulta.Parameters.AddWithValue("@idPregunta", p.IdPregunta);
+            consulta.Parameters.AddWithValue("@Pregunta", p.Preguntas);
+            consulta.Parameters.AddWithValue("@Tipo", p.IdCategoria);
+            consulta.ExecuteNonQuery();
         }
         public static bool BorrarPregunta(int Id)
         {
@@ -337,5 +338,25 @@ namespace QEQ_09.Models
             return CategoriaModificada;
 
         }
+        public static bool InsertarUsuario(string Mail, string Password, string NomUsuario, bool  Tipo)
+        {
+            bool b = false;
+            SqlConnection Conexión = Conectar();
+            SqlCommand Consulta = Conexión.CreateCommand();
+            Consulta.CommandText = "InsertarUsuario";
+            Consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            Consulta.Parameters.AddWithValue("@email", Mail);
+            Consulta.Parameters.AddWithValue("@Pass", Password);
+            Consulta.Parameters.AddWithValue("@nom", NomUsuario);
+            Consulta.Parameters.AddWithValue("@Tipo", Tipo);
+            int regsAfec = Consulta.ExecuteNonQuery();
+            Desconectar(Conexión);
+            if (regsAfec == 1)
+            {
+                b = true;
+            }
+            return b;
+        }
+
     }
 }

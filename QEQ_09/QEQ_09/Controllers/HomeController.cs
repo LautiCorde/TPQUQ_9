@@ -146,7 +146,7 @@ namespace QEQ_09.Controllers
             else if (Accion == "Eliminar")
             {
                 BD.BorrarPersonaje(id);
-                return RedirectToAction("AdminPersonajes");
+                return RedirectToAction("AdministrarPersonajes");
             }
             return View();
         }
@@ -173,7 +173,7 @@ namespace QEQ_09.Controllers
             }
             else if (Accion == "Modificar")
             {
-                Personaje p= BD.ObtenerPersonaje(id);
+                Pregunta p= BD.ObtenerPregunta(id);
                 return View("EditarPregunta", p);
             }
             else if (Accion == "Eliminar")
@@ -184,18 +184,28 @@ namespace QEQ_09.Controllers
             return View();
         }
 
+    
+
+
         [HttpPost]
         public ActionResult GuardarPregunta(Pregunta p)
         {
-            BD.ModifcarPregunta(p.IdPregunta);
-            return RedirectToAction("AdminPregunta");
+            BD.ModifcarPregunta(p);
+            return RedirectToAction("AdministrarPreguntas");
         }
         
         [HttpPost]
-        public ActionResult InsertarPregunta(int idPregunta, string Preguntas, int idCategoria)
+        public ActionResult InsertarPregunta(string Preguntas, int idCategoria)
         {
             BD.InsertarPregunta(new Pregunta(-1, Preguntas, idCategoria));
-            return RedirectToAction("AdminPreguntas");
+            return RedirectToAction("AdministrarPreguntas");
+        }
+
+        [HttpPost]
+        public ActionResult Registrarse(string Mail, string Password, string NomUsuario, int Tipo)
+        {
+            BD.InsertarUsuario(Mail, Password,  NomUsuario, Convert.ToBoolean(Tipo));
+            return View("Index");
         }
     }
 }
