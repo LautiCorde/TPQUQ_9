@@ -8,7 +8,16 @@ namespace QEQ_09.Models
     public class CategoriaPersonaje
     {
         int idCatPer;
-        string CatPer;
+       string CatPer;
+
+        public CategoriaPersonaje() { }
+
+        public CategoriaPersonaje(int id, string catp)
+        {
+            IdCatPer = id;
+          CatPer= catp;
+          
+        }
 
         public int IdCatPer { get => idCatPer; set => idCatPer = value; }
         public string CatPer1 { get => CatPer; set => CatPer = value; }

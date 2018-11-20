@@ -146,7 +146,7 @@ namespace QEQ_09.Controllers
             else if (Accion == "Eliminar")
             {
                 BD.BorrarPersonaje(id);
-                return RedirectToAction("AdministrarPersonajes");
+                return RedirectToAction("AdminPersonajes");
             }
             return View();
         }
@@ -159,11 +159,22 @@ namespace QEQ_09.Controllers
         }
 
         [HttpPost]
-        public ActionResult AnadirPersonaje(string Nombre, int fkCategoria)
+        public ActionResult AnadirPersonaje(string Nombre, int fkCategoria = 0)
         {
-            BD.InsertarPersonaje(new Personaje(-1, Nombre, fkCategoria));
-            return RedirectToAction("AdminPersonajes");
+            if (Nombre == "" || fkCategoria == 0)
+            {
+                ViewBag.MensajeError = "Porfavor llene todos los campos";
+                return View("InsertarPersonaje");
+            }
+            else
+            {
+                BD.InsertarPersonaje(new Personaje(-1, Nombre, fkCategoria));
+                return RedirectToAction("AdminPersonajes");
+            }
+            
         }
+
+        
 
         public ActionResult AMPregunta(string Accion, int id)
         {
@@ -185,11 +196,12 @@ namespace QEQ_09.Controllers
         }
 
     
-
+          
 
         [HttpPost]
         public ActionResult GuardarPregunta(Pregunta p)
         {
+
             BD.ModifcarPregunta(p);
             return RedirectToAction("AdministrarPreguntas");
         }
@@ -197,8 +209,17 @@ namespace QEQ_09.Controllers
         [HttpPost]
         public ActionResult InsertarPregunta(string Preguntas, int idCategoria)
         {
-            BD.InsertarPregunta(new Pregunta(-1, Preguntas, idCategoria));
-            return RedirectToAction("AdministrarPreguntas");
+            if (Preguntas == "" || idCategoria == 0)
+            {
+                ViewBag.MensajeError = "Porfavor llene todos los campos";
+                return View("InsertarPersonaje");
+            }
+            else
+            {
+                BD.InsertarPregunta(new Pregunta(-1, Preguntas, idCategoria));
+                return RedirectToAction("AdministrarPreguntas");
+            }
+                
         }
 
         [HttpPost]
