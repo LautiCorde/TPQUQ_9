@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "AdminCatPer";
+}
+
+<h2>AdminCatPer</h2>
+
+<table style="width:100%">
+    <tr>
+        <th>ID</th>
+        <th>Categoria</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+    @foreach (QEQ_09.Models.CategoriaPersonaje cp in ViewBag.CategoriaPersonaje)
+    {
+        <tr>
+            <td>@cp.IdCatPer</td>
+            <td>@cp.CatPer1</td>
+            <td>@Html.ActionLink("Editar Categoria Personaje", "AMCatPer", "Home", new { Accion = "Modificar", Id = cp.IdCatPer, Pregunta = cp.CatPer1 }, null)</td>
+            <td>@Html.ActionLink("Eliminar Categoria Personaje", "AMCatPer", "Home", new { Accion = "Eliminar", Id = cp.IdCatPer }, null)</td>
+        </tr>
+    }
+</table>
+
+<td>@Html.ActionLink("Agregar Categoria Nueva", "AMCatPer", "Home", new { Accion = "Agregar", Id = -1, Categoria = ""}, null)</td>
+

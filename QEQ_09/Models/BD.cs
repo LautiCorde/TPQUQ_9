@@ -99,12 +99,6 @@ namespace QEQ_09.Models
 
         }
 
-
-
-
-
-
-
         public static List<Pregunta> ListarPreguntas()
         {
             List<Pregunta> aux5 = new List<Pregunta>();
@@ -129,9 +123,6 @@ namespace QEQ_09.Models
 
         }
 
-
-
-
         public static Pregunta ObtenerPregunta(int id)
         {
             SqlConnection Conexion = Conectar();
@@ -153,8 +144,6 @@ namespace QEQ_09.Models
 
         }
 
-
-
         public static bool Login(string Email, string Password)
         {
             bool Existencia = false;
@@ -175,7 +164,7 @@ namespace QEQ_09.Models
         }
 
 
-        public static bool BackOfficeLogin(string aEmail, string aPassword)
+       public static bool BackOfficeLogin(string aEmail, string aPassword)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
@@ -206,7 +195,6 @@ namespace QEQ_09.Models
             return adm;
         }
 
-
        public static int InsertarPregunta(Pregunta p)
         {
             SqlConnection Conexion = Conectar();
@@ -230,6 +218,7 @@ namespace QEQ_09.Models
             consulta.Parameters.AddWithValue("@Tipo", p.IdCategoria);
             consulta.ExecuteNonQuery();
         }
+
         public static bool BorrarPregunta(int Id)
         {
             bool Preguntaa = false;
@@ -246,6 +235,7 @@ namespace QEQ_09.Models
             Desconectar(Conexion);
             return Preguntaa;
         }
+
         public static int InsertarPersonaje(Personaje p)
         {
             SqlConnection Conexion = Conectar();
@@ -257,6 +247,7 @@ namespace QEQ_09.Models
             int NuevoPersonaje = consulta.ExecuteNonQuery();
             return NuevoPersonaje;
         }
+
         public static int ModifcarPersonaje(Personaje x)
         {
             SqlConnection Conexion = Conectar();
@@ -269,6 +260,7 @@ namespace QEQ_09.Models
             int PersonajeModificado = consulta.ExecuteNonQuery();
             return PersonajeModificado;
         }
+
         public static bool BorrarPersonaje(int Id)
         {
             bool Personaje = false;
@@ -286,11 +278,9 @@ namespace QEQ_09.Models
             return Personaje;
         }
 
-        /*
         public static List<CategoriaPersonaje> ListarCategoriaPersonaje()
         {
-            List<CatergoriaPersonaje> aux3 = new List<CategoriaPersonaje>();
-
+            List<CategoriaPersonaje> aux3 = new List<CategoriaPersonaje>();
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
             consulta.CommandText = "ListarCategoriaPersonajes";
@@ -313,7 +303,6 @@ namespace QEQ_09.Models
 
         }
 
-    */
         private static int InsertarCatPersonaje(CategoriaPersonaje c)
         {
             SqlConnection Conexion = Conectar();

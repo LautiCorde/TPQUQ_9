@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D50AE9C0-978F-4077-95D6-B90C5AEEC755}</ProjectGuid>
+    <ProjectGuid>{E17EFEAF-4392-41E0-9D49-3CA01BFE14B1}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -160,7 +160,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\LOGO.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -196,21 +195,23 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Aboutus.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Registro.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Instrucciones.cshtml" />
-    <Content Include="Views\Home\OlvidarContraseña.cshtml" />
-    <Content Include="Views\Home\BackOfficeLogin.cshtml" />
+    <Content Include="Views\Home\Aboutus.cshtml" />
     <Content Include="Views\Home\adm.cshtml" />
-    <Content Include="Views\Home\AdminPersonajes.cshtml" />
-    <Content Include="Views\Home\EditarPersonaje.cshtml" />
-    <Content Include="Views\Home\InsertarPersonaje.cshtml" />
     <Content Include="Views\Home\AdministrarPreguntas.cshtml" />
-    <Content Include="Views\Home\InsertarPregunta.cshtml" />
-    <Content Include="Views\EditarPregunta.cshtml" />
+    <Content Include="Views\Home\AdminPersonajes.cshtml" />
+    <Content Include="Views\Home\BackOfficeLogin.cshtml" />
+    <Content Include="Views\Home\EditarPersonaje.cshtml" />
     <Content Include="Views\Home\EditarPregunta.cshtml" />
+    <Content Include="Views\Home\InsertarPersonaje.cshtml" />
+    <Content Include="Views\Home\InsertarPregunta.cshtml" />
+    <Content Include="Views\Home\Instrucciones.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\OlvidarContraseña.cshtml" />
+    <Content Include="Views\Home\Registro.cshtml" />
+    <Content Include="Views\Home\AdminCatPer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -244,9 +245,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51748</DevelopmentServerPort>
+          <DevelopmentServerPort>57267</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51748/</IISUrl>
+          <IISUrl>http://localhost:57267/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

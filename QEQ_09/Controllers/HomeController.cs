@@ -228,5 +228,14 @@ namespace QEQ_09.Controllers
             BD.InsertarUsuario(Mail, Password,  NomUsuario, Convert.ToBoolean(Tipo));
             return View("Index");
         }
+
+        public ActionResult AdminCatPer()
+        {
+            ViewBag.CategoriaPersonaje = BD.ListarCategoriaPersonaje();
+            return View();
+        }
+
+        
+
     }
 }
