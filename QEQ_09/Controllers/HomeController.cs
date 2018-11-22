@@ -161,18 +161,11 @@ namespace QEQ_09.Controllers
         [HttpPost]
         public ActionResult AnadirPersonaje(string Nombre, int fkCategoria = 0)
         {
-            if (Nombre == "" || fkCategoria == 0)
-            {
-                ViewBag.MensajeError = "Porfavor llene todos los campos";
-                return View("InsertarPersonaje");
-            }
-            else
-            {
                 BD.InsertarPersonaje(new Personaje(-1, Nombre, fkCategoria));
                 return RedirectToAction("AdminPersonajes");
             }
             
-        }
+        
 
         
 
