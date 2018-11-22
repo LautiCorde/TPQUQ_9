@@ -6,10 +6,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace QEQ_09.Models
 {
-    
+
     public class Personaje
     {
-       
+
         int idPersonaje;
         string Nombre;
         int fk_Categoria;
@@ -28,5 +28,8 @@ namespace QEQ_09.Models
         public string Nombre1 { get => Nombre; set => Nombre = value; }
         [Required(ErrorMessage = "Categoria inválida.")]
         public int Fk_Categoria { get => fk_Categoria; set => fk_Categoria = value; }
+
     }
+
 }
+
