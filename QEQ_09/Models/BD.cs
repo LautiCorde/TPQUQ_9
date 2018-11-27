@@ -135,7 +135,7 @@ namespace QEQ_09.Models
             {
                 int idCaracteristica = Convert.ToInt32(dataReader["idcaracteristica"]);
                 string Caracteristica = Convert.ToString(dataReader["Caracteristica"]);
-                int fkCategoria = Convert.ToInt32(dataReader["fkCategoria"]);
+                int fkCategoria = Convert.ToInt32(dataReader["fk_Categoria"]);
                 Caracteristicas c = new Caracteristicas(idCaracteristica, Caracteristica, fkCategoria);
                 aux6.Add(c);
 

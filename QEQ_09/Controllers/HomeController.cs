@@ -55,6 +55,19 @@ namespace QEQ_09.Controllers
             return View();
         }
 
+
+        public ActionResult AdministrarCaracteristicas()
+        {
+            ViewBag.Caracteristicas = BD.ListarCaracteristicas();
+            return View();
+        }
+
+        public ActionResult AsignarCaracteristicas()
+        {
+            ViewBag.Personajes = BD.ListarPersonajes();
+            return View();
+        }
+
         [HttpGet]
         public ActionResult AcceptLogin(string Email, string Password)
         {
@@ -150,6 +163,22 @@ namespace QEQ_09.Controllers
             }
             return View();
         }
+
+        public ActionResult AMCaracteristicas(string Accion, int id)
+        {
+            if (Accion == "Asignar")
+            {
+                return RedirectToAction("InsertarPersonaje");
+            }
+       
+            return View();
+        }
+
+
+
+
+
+
 
         [HttpPost]
         public ActionResult GuardarPersonaje(Personaje x)
