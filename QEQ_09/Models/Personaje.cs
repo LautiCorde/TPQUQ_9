@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace QEQ_09.Models
 {
 
@@ -15,12 +16,15 @@ namespace QEQ_09.Models
         int fk_Categoria;
 
         public int IdPersonaje { get => idPersonaje; set => idPersonaje = value; }
-     
-        public string Nombre1 { get => Nombre; set => Nombre = value; }
-      
-        public int Fk_Categoria { get => fk_Categoria; set => fk_Categoria = value; }
-   
 
+        [Required(ErrorMessage = "Ingresá un nombre válido")]
+        public string Nombre1 { get => Nombre; set => Nombre = value; }
+
+        [Required(ErrorMessage = "Ingresá una categoria valida")]
+
+        public int Fk_Categoria { get => fk_Categoria; set => fk_Categoria = value; }
+
+       
 
         public Personaje(int id, string nom, int fkcat)
         {

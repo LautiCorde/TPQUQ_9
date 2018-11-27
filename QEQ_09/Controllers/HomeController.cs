@@ -161,13 +161,38 @@ namespace QEQ_09.Controllers
         [HttpPost]
         public ActionResult AnadirPersonaje(string Nombre, int fkCategoria = 0)
         {
+            if (Nombre == "" || fkCategoria == 0)
+            {
+                ViewBag.MensajeError = "Porfavor llene todos los campos";
+                return View("InsertarPregunta");
+            }
+            else
+            {
                 BD.InsertarPersonaje(new Personaje(-1, Nombre, fkCategoria));
                 return RedirectToAction("AdminPersonajes");
             }
             
-        
+        }
 
-        
+       /* [HttpPost]
+        public ActionResult ModificarPersonaje(string Nombre, int fkCategoria = 0)
+        {
+            if (Nombre == "" || fkCategoria == 0)
+            {
+                ViewBag.MensajeError = "Porfavor llene todos los campos";
+                return View("InsertarPregunta");
+            }
+            else
+            {
+                BD.ModifcarPersonaje(new Personaje(-1, Nombre, fkCategoria));
+                return RedirectToAction("AdminPersonajes");
+            }
+
+        }
+        */
+
+
+
 
         public ActionResult AMPregunta(string Accion, int id)
         {
@@ -205,7 +230,7 @@ namespace QEQ_09.Controllers
             if (Preguntas == "" || idCategoria == 0)
             {
                 ViewBag.MensajeError = "Porfavor llene todos los campos";
-                return View("InsertarPersonaje");
+                return View("InsertarPregunta");
             }
             else
             {
