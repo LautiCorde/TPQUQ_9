@@ -5,6 +5,12 @@
 
 <h2>AdminpREGUNTAS</h2>
 
+<style>
+    body {
+        background-color: deepskyblue;
+    }
+</style>
+
 <table style="width:100%">
     <tr>
         <th>Pregunta</th>
@@ -13,12 +19,13 @@
     </tr>
     @foreach (QEQ_09.Models.Pregunta p in ViewBag.Pregunta)
     {
-        <tr>
-            <td>@p.Preguntas</td>
-            <td>@Html.ActionLink("Editar Pregunta", "AMPregunta", "Home", new { Accion = "Modificar", Id = p.IdPregunta, Pregunta = p.Preguntas }, null)</td>
-            <td>@Html.ActionLink("Eliminar Pregunta", "AMPregunta", "Home", new { Accion = "Eliminar", Id = p.IdPregunta }, null)</td>
-        </tr>
+    <tr>
+        <td>@p.Preguntas</td>
+        <td>@Html.ActionLink("🖊️", "AMPregunta", "Home", new { Accion = "Modificar", Id = p.IdPregunta, Pregunta = p.Preguntas }, null)</td>
+        <td>@Html.ActionLink("🗑", "AMPregunta", "Home", new { Accion = "Eliminar", Id = p.IdPregunta }, null)</td>
+        
+    </tr>
     }
 </table>
 
-<td>@Html.ActionLink("Agregar Pregunta Nueva", "AMPregunta", "Home", new { Accion = "Agregar", Id = -1, Pregunta = "", CategoriaPregunta = 0, TipoPregunta=0 }, null)</td>
+<td>@Html.ActionLink("Insertar Nuevo ✝", "AMPregunta", "Home", new { Accion = "Agregar", Id = -1, Pregunta = "", CategoriaPregunta = 0, TipoPregunta = 0 }, null)</td>

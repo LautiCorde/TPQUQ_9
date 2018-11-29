@@ -55,6 +55,19 @@ namespace QEQ_09.Controllers
             return View();
         }
 
+
+        public ActionResult AdministrarCaracteristicas()
+        {
+            ViewBag.Caracteristicas = BD.ListarCaracteristicas();
+            return View();
+        }
+
+        public ActionResult AsignarCaracteristicas()
+        {
+            ViewBag.Caracteristica = BD.ListarCaracteristicas();
+            return View();
+        }
+
         [HttpGet]
         public ActionResult AcceptLogin(string Email, string Password)
         {
@@ -142,32 +155,87 @@ namespace QEQ_09.Controllers
             {
                 Personaje x = BD.ObtenerPersonaje(id);
                 return View("EditarPersonaje",x);
+                
             }
             else if (Accion == "Eliminar")
             {
                 BD.BorrarPersonaje(id);
                 return RedirectToAction("AdminPersonajes");
             }
+
+            else if (Accion == "Asignar")
+            {
+               
+                return View("AsignarCaracteristicas");
+            }
             return View();
         }
+
+        public ActionResult AMCaracteristicas(string Accion, int id)
+        {
+            if (Accion == "Asignar")
+            {
+                return RedirectToAction("InsertarPersonaje");
+            }
+       
+            return View();
+        }
+
+
+
+
+
+
 
         [HttpPost]
         public ActionResult GuardarPersonaje(Personaje x)
         {
-            BD.ModifcarPersonaje(x);
-            return RedirectToAction("AdminPersonajes");
+            if (ModelState.IsValid)
+            {
+                BD.ModifcarPersonaje(x);
+                return RedirectToAction("AdminPersonajes");
+            }
+            else
+            {
+                return View("EditarPersonaje");
+            }
+    
         }
 
         [HttpPost]
         public ActionResult AnadirPersonaje(string Nombre, int fkCategoria = 0)
         {
+            if (!ModelState.IsValid)
+            {
                 BD.InsertarPersonaje(new Personaje(-1, Nombre, fkCategoria));
                 return RedirectToAction("AdminPersonajes");
             }
+            else
+            {
+                return View("InsertarPersonaje");
+            }
             
-        
+        }
 
-        
+       /* [HttpPost]
+        public ActionResult ModificarPersonaje(string Nombre, int fkCategoria = 0)
+        {
+            if (Nombre == "" || fkCategoria == 0)
+            {
+                ViewBag.MensajeError = "Porfavor llene todos los campos";
+                return View("InsertarPregunta");
+            }
+            else
+            {
+                BD.ModifcarPersonaje(new Personaje(-1, Nombre, fkCategoria));
+                return RedirectToAction("AdminPersonajes");
+            }
+
+        }
+        */
+
+
+
 
         public ActionResult AMPregunta(string Accion, int id)
         {
@@ -205,7 +273,7 @@ namespace QEQ_09.Controllers
             if (Preguntas == "" || idCategoria == 0)
             {
                 ViewBag.MensajeError = "Porfavor llene todos los campos";
-                return View("InsertarPersonaje");
+                return View("InsertarPregunta");
             }
             else
             {

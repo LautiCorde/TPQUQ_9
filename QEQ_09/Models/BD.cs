@@ -112,7 +112,7 @@ namespace QEQ_09.Models
                 int idPregunta = Convert.ToInt32(dataReader["idPregunta"]);
                 string Pregunta = Convert.ToString(dataReader["Pregunta"]);
                 int idCategoria = Convert.ToInt32(dataReader["idCategoria"]);
-                Pregunta p = new Pregunta (idPregunta, Pregunta, idCategoria);
+                Pregunta p = new Pregunta(idPregunta, Pregunta, idCategoria);
                 aux5.Add(p);
 
             }
@@ -122,6 +122,33 @@ namespace QEQ_09.Models
             return aux5;
 
         }
+
+        public static List<Caracteristicas> ListarCaracteristicas()
+        {
+            List<Caracteristicas> aux6 = new List<Caracteristicas>();
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "ListarCaracteristicas";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlDataReader dataReader = consulta.ExecuteReader();
+            while (dataReader.Read())
+            {
+                int idCaracteristica = Convert.ToInt32(dataReader["idcaracteristica"]);
+                string Caracteristica = Convert.ToString(dataReader["Caracteristica"]);
+                int fkCategoria = Convert.ToInt32(dataReader["fk_Categoria"]);
+                Caracteristicas c = new Caracteristicas(idCaracteristica, Caracteristica, fkCategoria);
+                aux6.Add(c);
+
+            }
+
+
+
+            Desconectar(Conexion);
+            return aux6;
+
+        }
+
+
 
         public static Pregunta ObtenerPregunta(int id)
         {

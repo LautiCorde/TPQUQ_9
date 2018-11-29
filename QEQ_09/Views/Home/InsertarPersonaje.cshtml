@@ -1,6 +1,13 @@
 ﻿@using QEQ_09.Models
 @model Personaje
 
+<style>
+    body {
+        background-color: deepskyblue;
+    }
+</style>
+
+
 @{
     ViewBag.Title = "InsertarPersonaje";
 }
@@ -10,7 +17,8 @@
 <form action="@Url.Action("AnadirPersonaje","Home")" method="post">
     <p>Nombre: @Html.TextBoxFor((x => x.Nombre1), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.Nombre1)</p><br />
     <p>IDCategoria: @Html.TextBoxFor((x => x.Fk_Categoria), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.Fk_Categoria)</p><br />
-  
+
     <input id="submit" type="submit" value="Insertar" />
 </form>
 
+<h3>@ViewBag.MensajeError</h3>

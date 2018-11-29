@@ -214,6 +214,9 @@
     <Content Include="Views\Home\AdminCatPer.cshtml" />
     <Content Include="Views\Home\EditarCatPer.cshtml" />
     <Content Include="Views\Home\InsertarCatPer.cshtml" />
+    <Content Include="Views\Home\AdministrarCaracteristicas.cshtml" />
+    <Content Include="Views\View.cshtml" />
+    <Content Include="Views\Home\AsignarCaracteristicas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

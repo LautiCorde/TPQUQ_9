@@ -4,6 +4,15 @@
     ViewBag.Title = "AdminPersonajes";
 }
 
+<style>
+    body {
+        background-color: deepskyblue;
+    }
+
+
+</style>
+
+
 <h2>AdminPersonajes</h2>
 
 <table style="width:100%">
@@ -13,6 +22,7 @@
         <th>Categoria</th>
         <th>Editar</th>
         <th>Eliminar</th>
+        <th>Asignar</th>
     </tr>
     @foreach (QEQ_09.Models.Personaje p in ViewBag.Personaje)
     {
@@ -20,9 +30,10 @@
         <td>@p.IdPersonaje</td>
         <td>@p.Nombre1</td>
         <td>@p.Fk_Categoria</td>
-        <td>@Html.ActionLink("Editar Personaje", "AMPersonaje", "Home", new { Accion = "Modificar", Id = p.IdPersonaje, Nombre = p.Nombre1, Categoria = p.Fk_Categoria}, null)</td>
-        <td>@Html.ActionLink("Eliminar Personaje", "AMPersonaje", "Home", new { Accion = "Eliminar", Id = p.IdPersonaje}, null)</td>
+        <td>@Html.ActionLink("🖊️", "AMPersonaje", "Home", new { Accion = "Modificar", Id = p.IdPersonaje, Nombre = p.Nombre1, Categoria = p.Fk_Categoria }, null)</td>
+        <td>@Html.ActionLink("🗑 ", "AMPersonaje", "Home", new { Accion = "Eliminar", Id = p.IdPersonaje }, null)</td>
+        <td>@Html.ActionLink("Asignar Caracteristicas ", "AMPersonaje", "Home", new { Accion = "Asignar", Id = p.IdPersonaje }, null)</td>
     </tr>
     }
 </table>
-<td>@Html.ActionLink("Agregar Personaje Nuevo", "AMPersonaje", "Home", new { Accion = "Agregar", Id = -1, Nombre = "", Categoria = 0}, null)</td>
+<td>@Html.ActionLink("️Isertar Nuevo ✝", "AMPersonaje", "Home", new { Accion = "Agregar", Id = -1, Nombre = "", Categoria = 0 }, null)</td>
