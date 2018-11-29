@@ -64,7 +64,7 @@ namespace QEQ_09.Controllers
 
         public ActionResult AsignarCaracteristicas()
         {
-            ViewBag.Personajes = BD.ListarPersonajes();
+            ViewBag.Caracteristica = BD.ListarCaracteristicas();
             return View();
         }
 
@@ -155,11 +155,18 @@ namespace QEQ_09.Controllers
             {
                 Personaje x = BD.ObtenerPersonaje(id);
                 return View("EditarPersonaje",x);
+                
             }
             else if (Accion == "Eliminar")
             {
                 BD.BorrarPersonaje(id);
                 return RedirectToAction("AdminPersonajes");
+            }
+
+            else if (Accion == "Asignar")
+            {
+               
+                return View("AsignarCaracteristicas");
             }
             return View();
         }
@@ -183,22 +190,29 @@ namespace QEQ_09.Controllers
         [HttpPost]
         public ActionResult GuardarPersonaje(Personaje x)
         {
-            BD.ModifcarPersonaje(x);
-            return RedirectToAction("AdminPersonajes");
+            if (ModelState.IsValid)
+            {
+                BD.ModifcarPersonaje(x);
+                return RedirectToAction("AdminPersonajes");
+            }
+            else
+            {
+                return View("EditarPersonaje");
+            }
+    
         }
 
         [HttpPost]
         public ActionResult AnadirPersonaje(string Nombre, int fkCategoria = 0)
         {
-            if (Nombre == "" || fkCategoria == 0)
-            {
-                ViewBag.MensajeError = "Porfavor llene todos los campos";
-                return View("InsertarPregunta");
-            }
-            else
+            if (!ModelState.IsValid)
             {
                 BD.InsertarPersonaje(new Personaje(-1, Nombre, fkCategoria));
                 return RedirectToAction("AdminPersonajes");
+            }
+            else
+            {
+                return View("InsertarPersonaje");
             }
             
         }
