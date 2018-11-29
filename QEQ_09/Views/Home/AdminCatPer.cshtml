@@ -17,8 +17,8 @@
         <tr>
             <td>@cp.IdCatPer</td>
             <td>@cp.CatPer1</td>
-            <td>@Html.ActionLink("Editar Categoria Personaje", "AMCatPer", "Home", new { Accion = "Modificar", Id = cp.IdCatPer, Pregunta = cp.CatPer1 }, null)</td>
-            <td>@Html.ActionLink("Eliminar Categoria Personaje", "AMCatPer", "Home", new { Accion = "Eliminar", Id = cp.IdCatPer }, null)</td>
+            <td>@Html.ActionLink("Editar", "AMCatPer", "Home", new { Accion = "Modificar", Id = cp.IdCatPer, Pregunta = cp.CatPer1 }, null)</td>
+            <td>@Html.ActionLink("Eliminar", "AMCatPer", "Home", new { Accion = "Eliminar", Id = cp.IdCatPer }, null)</td>
         </tr>
     }
 </table>

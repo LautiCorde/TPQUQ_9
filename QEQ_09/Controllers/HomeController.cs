@@ -228,7 +228,54 @@ namespace QEQ_09.Controllers
             return View();
         }
 
-        
+        public ActionResult EditarCatPer()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult InsertarCatPer(CategoriaPersonaje cp)
+        {
+        
+            if (cp.CatPer1 == "")
+            {
+                ViewBag.MensajeError = "Porfavor llene todos los campos";
+                return View("InsertarCatPer");
+            }
+            else
+            {
+                // BD.InsertarCatPersonaje(new CategoriaPersonaje(-1, CatPer));
+                BD.InsertarCatPersonaje(cp);
+                return RedirectToAction("AdminCatPer");
+            }
+
+        }
+
+        public  ActionResult GuardarCatPer(CategoriaPersonaje cp, int Id)
+        {
+            BD.ModifcarCatPersonaje(Id, cp.CatPer1);
+            return RedirectToAction("AdminCatPer");
+        }
+
+        public ActionResult AMCatPer(string Accion, int id)
+        {
+            if (Accion == "Agregar")
+            {
+                return RedirectToAction("InsertarCatPer");
+            }
+            else if (Accion == "Modificar")
+            {
+                CategoriaPersonaje cp = BD.ObtenerCatPer(id);
+               ViewBag.ID = id;
+             
+                return View("EditarCatPer", cp);
+            }
+            else if (Accion == "Eliminar")
+            {
+                BD.BorrarCatPer(id);
+                return RedirectToAction("AdminCatPer");
+            }
+            return View();
+        }
     }
 }

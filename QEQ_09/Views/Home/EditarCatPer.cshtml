@@ -1,0 +1,13 @@
+﻿@using QEQ_09.Models
+@model CategoriaPersonaje
+@{
+    ViewBag.Title = "EditarCatPer";
+}
+
+<h2>EditarCatPer</h2>
+
+<form action="@Url.Action("GuardarCatPer","Home")" method="post">
+    Categoria @Html.TextBoxFor(cp => cp.CatPer1)<br /><br />
+    <input type="hidden" name="Id" value="@ViewBag.ID" />
+    <input id="submit" type="submit" value="Guardar" />
+</form>

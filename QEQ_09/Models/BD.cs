@@ -303,7 +303,7 @@ namespace QEQ_09.Models
 
         }
 
-        private static int InsertarCatPersonaje(CategoriaPersonaje c)
+        public static int InsertarCatPersonaje(CategoriaPersonaje c)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
@@ -318,17 +318,58 @@ namespace QEQ_09.Models
 
 
 
-        private static int ModifcarCatPersonaje(int idCatPer)
+        public static int ModifcarCatPersonaje(int idCatPer, string CatPer1)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
             consulta.CommandText = "ModificarCategoriaPersonajes";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
             consulta.Parameters.AddWithValue("@pidCatPer", idCatPer);
+            consulta.Parameters.AddWithValue("@pCatPer", CatPer1);
             int CategoriaModificada = consulta.ExecuteNonQuery();
             return CategoriaModificada;
 
         }
+
+        public static CategoriaPersonaje ObtenerCatPer(int idCatPer)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "ObtenerCategoriaPersonajes";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("@pidCatPer", idCatPer);
+            SqlDataReader dataReader = consulta.ExecuteReader();
+            CategoriaPersonaje cp = null;
+            while (dataReader.Read())
+            {
+                
+                string CatPer = Convert.ToString(dataReader["CatPer"]);
+                cp = new CategoriaPersonaje(idCatPer, CatPer);
+            }
+            Desconectar(Conexion);
+            return cp;
+
+        }
+
+
+        public static bool BorrarCatPer(int idCatPer)
+        {
+            bool CatPer = false;
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandText = "sp_EliminarCategoriaPersonajes";
+            consulta.CommandType = System.Data.CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("@pid", idCatPer);
+            SqlDataReader dataReader = consulta.ExecuteReader();
+            if (dataReader.Read())
+            {
+                CatPer = true;
+            }
+            Desconectar(Conexion);
+            return CatPer;
+        }
+
+
         public static bool InsertarUsuario(string Mail, string Password, string NomUsuario, bool  Tipo)
         {
             bool b = false;

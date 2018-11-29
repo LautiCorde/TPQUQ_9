@@ -1,0 +1,14 @@
+﻿@using QEQ_09.Models
+@model CategoriaPersonaje
+
+@{
+    ViewBag.Title = "InsertarCatPer";
+}
+
+<h2>InsertarCatPer</h2>
+
+<form action="@Url.Action("InsertarCatPer","Home")" method="post">
+    <p>Nombre: @Html.TextBoxFor((catp => catp.CatPer1), (object)ViewBag.Enabled) @Html.ValidationMessageFor(catp => catp.CatPer1)</p><br />
+    <input id="submit" type="submit" value="Insertar" />
+
+</form>
