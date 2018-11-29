@@ -233,6 +233,11 @@ namespace QEQ_09.Controllers
             return View();
         }
 
+        public ActionResult InsertarCatPer()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult InsertarCatPer(CategoriaPersonaje cp)
         {

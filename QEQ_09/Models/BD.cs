@@ -303,13 +303,13 @@ namespace QEQ_09.Models
 
         }
 
-        public static int InsertarCatPersonaje(CategoriaPersonaje c)
+        public static int InsertarCatPersonaje(CategoriaPersonaje cp)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
             consulta.CommandText = "InsertarCategoriaPersonajes";
             consulta.CommandType = System.Data.CommandType.StoredProcedure;
-            consulta.Parameters.AddWithValue("@CatPer", c.CatPer1);
+            consulta.Parameters.AddWithValue("@CatPer", cp.CatPer1);
             int NuevaCategoria = consulta.ExecuteNonQuery();
             return NuevaCategoria;
         }
