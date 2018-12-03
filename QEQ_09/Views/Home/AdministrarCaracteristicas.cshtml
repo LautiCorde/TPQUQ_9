@@ -1,4 +1,4 @@
-﻿
+﻿@using QEQ_09.Models
 @{
     ViewBag.Title = "AdministrarCaracteristicas";
 }
@@ -11,18 +11,32 @@
     }
 </style>
 
-<table style="width:100%">
-    <tr>
-        <th>Caracteristicas</th>
-        <th>↡↡↡↡↡↡</th>
 
-    </tr>
-    @foreach (QEQ_09.Models.Caracteristicas c in ViewBag.Caracteristicas)
+@using (Html.BeginForm("--", "Backoffice", FormMethod.Post))
+{
+    List<bool> Lista = new List<bool>();
+
+    for(int i = 0; i <= ViewBag.Caracteristicas.Count; i++)
     {
-    <tr>
-        <td>@c.Caracteristica1</td>
-        <td>@Html.ActionLink("Asignar", "AMCaracteristicas", "Home", new { Accion = "Asignar", IdCaracteristica = c.IdCaracteristica }, null)</td>
-
-    </tr>
+         <input type="checkbox" name="@Lista[i]" value="@Lista[i].ToString()" />
     }
-</table>
+         <input type="submit" value="Enviar" />
+}s
+
+
+    <table style="width:100%">
+        <tr>
+            <th>Caracteristicas</th>
+            <th>↡↡↡↡↡↡</th>
+
+        </tr>
+        @foreach (QEQ_09.Models.Caracteristicas c in ViewBag.Caracteristicas)
+        {
+            <tr>
+                <td>@c.Caracteristica1</td>
+
+
+            </tr>
+            }
+    </table>
+

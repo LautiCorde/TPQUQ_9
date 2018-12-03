@@ -11,13 +11,13 @@ namespace QEQ_09.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message  = "Bienvenidos al juego";
+            ViewBag.Message = "Bienvenidos al juego";
             return View();
         }
 
         public ActionResult InsertarPregunta()
         {
-           return View();
+            return View();
         }
 
         public ActionResult Aboutus()
@@ -62,12 +62,14 @@ namespace QEQ_09.Controllers
             return View();
         }
 
-        public ActionResult AsignarCaracteristicas()
+       /* [HttpPost]
+        public ActionResult AdministrarCaracteristicas(List <bool> lista)
         {
-            ViewBag.Caracteristica = BD.ListarCaracteristicas();
-            return View();
+            
+            return RedirectToAction()
         }
-
+        */
+      
         [HttpGet]
         public ActionResult AcceptLogin(string Email, string Password)
         {

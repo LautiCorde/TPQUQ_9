@@ -52,6 +52,21 @@ namespace QEQ_09.Models
 
         }
 
+        public static void InsertarCaracteristicaxPersonaje(int IdCaracteristica, int IdPersonaje)
+        {
+            SqlConnection Conexion = Conectar();
+            SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandType = CommandType.StoredProcedure;
+            consulta.CommandText = "InsertarCaracteristicaxPersonaje";
+            consulta.Parameters.AddWithValue("@idcaracteristica", IdCaracteristica);
+            consulta.Parameters.AddWithValue("@idpersonaje", IdPersonaje);
+            consulta.ExecuteNonQuery();
+            Desconectar(Conexion);
+        }
+
+
+
+
         public static List<Personaje> ListarPersonajes()
         {
             List<Personaje> aux3 = new List<Personaje>();
