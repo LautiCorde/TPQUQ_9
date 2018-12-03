@@ -14,11 +14,11 @@
 
 <h2>InsertarPersonaje</h2>
 
-<form action="@Url.Action("AnadirPersonaje","Home")" method="post">
+@using (Html.BeginForm("AnadirPersonaje", "Home"))
+{
     <p>Nombre: @Html.TextBoxFor((x => x.Nombre1), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.Nombre1)</p><br />
     <p>IDCategoria: @Html.TextBoxFor((x => x.Fk_Categoria), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.Fk_Categoria)</p><br />
 
     <input id="submit" type="submit" value="Insertar" />
-</form>
-
+}
 <h3>@ViewBag.MensajeError</h3>

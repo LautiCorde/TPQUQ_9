@@ -222,17 +222,18 @@ namespace QEQ_09.Models
             return adm;
         }
 
-       public static int InsertarPregunta(Pregunta p)
+        public static void InsertarPregunta(Pregunta p)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandType = CommandType.StoredProcedure;
             consulta.CommandText = "InsertarPregunta";
-            consulta.CommandType = System.Data.CommandType.StoredProcedure;
             consulta.Parameters.AddWithValue("@pPreg", p.Preguntas);
             consulta.Parameters.AddWithValue("@idCat", p.IdCategoria);
-            int NuevaPreg = consulta.ExecuteNonQuery();
-            return NuevaPreg;
+            consulta.ExecuteNonQuery();
+            Desconectar(Conexion);
         }
+
 
         public static void ModifcarPregunta(Pregunta p)
         {
@@ -263,16 +264,16 @@ namespace QEQ_09.Models
             return Preguntaa;
         }
 
-        public static int InsertarPersonaje(Personaje p)
+        public static void InsertarPersonaje(Personaje p)
         {
             SqlConnection Conexion = Conectar();
             SqlCommand consulta = Conexion.CreateCommand();
+            consulta.CommandType = CommandType.StoredProcedure;
             consulta.CommandText = "InsertarPersonaje";
-            consulta.CommandType = System.Data.CommandType.StoredProcedure;
             consulta.Parameters.AddWithValue("@pNombre", p.Nombre1);
-            consulta.Parameters.AddWithValue("@Caracteristica", p.Fk_Categoria);
-            int NuevoPersonaje = consulta.ExecuteNonQuery();
-            return NuevoPersonaje;
+            consulta.Parameters.AddWithValue("@Fk_Categoria", p.Fk_Categoria);
+            consulta.ExecuteNonQuery();
+            Desconectar(Conexion);
         }
 
         public static int ModifcarPersonaje(Personaje x)

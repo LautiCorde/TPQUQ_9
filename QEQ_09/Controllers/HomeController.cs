@@ -203,16 +203,17 @@ namespace QEQ_09.Controllers
         }
 
         [HttpPost]
-        public ActionResult AnadirPersonaje(string Nombre, int fkCategoria = 0)
+        public ActionResult AnadirPersonaje(Personaje p)
         {
             if (!ModelState.IsValid)
             {
-                BD.InsertarPersonaje(new Personaje(-1, Nombre, fkCategoria));
-                return RedirectToAction("AdminPersonajes");
+                return View("InsertarPersonaje", p);
             }
             else
             {
-                return View("InsertarPersonaje");
+                BD.InsertarPersonaje(new Personaje(-1, p.Nombre1, p.Fk_Categoria));
+                return RedirectToAction("AdminPersonajes");
+               
             }
             
         }
@@ -266,21 +267,21 @@ namespace QEQ_09.Controllers
             BD.ModifcarPregunta(p);
             return RedirectToAction("AdministrarPreguntas");
         }
-        
+
         [HttpPost]
-        public ActionResult InsertarPregunta(string Preguntas, int idCategoria)
+        public ActionResult AnadirPregunta(Pregunta p)
         {
-            if (Preguntas == "" || idCategoria == 0)
+            if (!ModelState.IsValid)
             {
-                ViewBag.MensajeError = "Porfavor llene todos los campos";
-                return View("InsertarPregunta");
+                return View("InsertarPregunta", p);
             }
             else
             {
-                BD.InsertarPregunta(new Pregunta(-1, Preguntas, idCategoria));
+                BD.InsertarPregunta(new Pregunta(-1, p.Preguntas, p.IdCategoria));
                 return RedirectToAction("AdministrarPreguntas");
+
             }
-                
+
         }
 
         [HttpPost]
