@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace QEQ_09.Models
 {
@@ -19,7 +20,9 @@ namespace QEQ_09.Models
           
         }
 
+
         public int IdCatPer { get => idCatPer; set => idCatPer = value; }
+        [Required(ErrorMessage = "Ingresá un nombre válido")]
         public string CatPer1 { get => CatPer; set => CatPer = value; }
     }
 }

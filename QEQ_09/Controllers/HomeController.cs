@@ -312,19 +312,22 @@ namespace QEQ_09.Controllers
         [HttpPost]
         public ActionResult InsertarCatPer(CategoriaPersonaje cp)
         {
-        
-            if (cp.CatPer1 == "")
-            {
-                ViewBag.MensajeError = "Porfavor llene todos los campos";
-                return View("InsertarCatPer");
-            }
-            else
+
+
+            if (ModelState.IsValid)
             {
                 // BD.InsertarCatPersonaje(new CategoriaPersonaje(-1, CatPer));
                 BD.InsertarCatPersonaje(cp);
                 return RedirectToAction("AdminCatPer");
             }
+            else
+            {
+                return View("InsertarCatPer");
+            }
 
+
+
+        
         }
 
         public  ActionResult GuardarCatPer(CategoriaPersonaje cp, int Id)

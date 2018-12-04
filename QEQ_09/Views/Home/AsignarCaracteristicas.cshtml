@@ -6,17 +6,26 @@
 
 <h2>Caracteristicas</h2>
 <form action="@Url.Action("InsertarCarPer","Home")" method="post">
-    @foreach(QEQ_09.Models.CategoriaCaracteristica c in ViewBag.Categorias)
+    @foreach (QEQ_09.Models.CategoriaCaracteristica c in ViewBag.Categorias)
     {
-        <label>@c.Nombre</label>
+        <h3>@c.Nombre</h3> <br />
+
+        foreach (QEQ_09.Models.Caracteristicas carPer in ViewBag.CaracteristicasPer)
+        {
+            if (carPer.Fk_Categoria == c.Id)
+            {
+                <label>Valor actual: @carPer.Caracteristica1</label> <br />
+            }
+        }
         <select name="caracteristicas[]">
-            @foreach(QEQ_09.Models.Caracteristicas car in ViewBag.Caracteristicas){
-                if(car.Fk_Categoria == c.Id)
+            @foreach (QEQ_09.Models.Caracteristicas car in ViewBag.Caracteristicas)
+            {
+                if (car.Fk_Categoria == c.Id)
                 {
                     <option value="@car.IdCaracteristica">@car.Caracteristica1</option>
                 }
             }
-        </select>
+        </select> <br />
     }
 
     <input type="hidden" name="idPersonaje" value="@ViewBag.idPersonaje" />

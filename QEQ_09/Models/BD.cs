@@ -52,6 +52,7 @@ namespace QEQ_09.Models
 
         }
 
+
         public static void InsertarCaracteristicaxPersonaje(int IdCaracteristica, int IdPersonaje)
         {
             SqlConnection Conexion = Conectar();
