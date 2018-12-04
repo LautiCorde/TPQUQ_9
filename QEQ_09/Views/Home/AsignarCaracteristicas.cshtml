@@ -4,16 +4,21 @@
     }
 </style>
 
-<table style="width:100%">
-    <tr>
-        <th>Caracteristicas</th>
-        <th>↡↡↡↡↡↡</th>
-
-    </tr>
-    @foreach (QEQ_09.Models.Caracteristicas c in ViewBag.Caracteristica)
+<h2>Caracteristicas</h2>
+<form action="@Url.Action("InsertarCarPer","Home")" method="post">
+    @foreach(QEQ_09.Models.CategoriaCaracteristica c in ViewBag.Categorias)
     {
-        <tr>
-            <td>@c.Caracteristica1</td>          
-        </tr>
+        <label>@c.Nombre</label>
+        <select name="caracteristicas[]">
+            @foreach(QEQ_09.Models.Caracteristicas car in ViewBag.Caracteristicas){
+                if(car.Fk_Categoria == c.Id)
+                {
+                    <option value="@car.IdCaracteristica">@car.Caracteristica1</option>
+                }
+            }
+        </select>
     }
-</table>
+
+    <input type="hidden" name="idPersonaje" value="@ViewBag.idPersonaje" />
+    <input id="submit" type="submit" value="Guardar" />
+</form>

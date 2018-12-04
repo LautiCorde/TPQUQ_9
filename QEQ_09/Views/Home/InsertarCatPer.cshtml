@@ -1,6 +1,12 @@
 ﻿@using QEQ_09.Models
 @model CategoriaPersonaje
 
+<style>
+    body {
+        background-color: deepskyblue;
+    }
+</style>
+
 @{
     ViewBag.Title = "InsertarCatPer";
 }
@@ -10,5 +16,4 @@
 <form action="@Url.Action("InsertarCatPer","Home")" method="post">
     <p>Nombre: @Html.TextBoxFor((catp => catp.CatPer1), (object)ViewBag.Enabled) @Html.ValidationMessageFor(catp => catp.CatPer1)</p><br />
     <input id="submit" type="submit" value="Insertar" />
-
 </form>

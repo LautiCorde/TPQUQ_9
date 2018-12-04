@@ -84,7 +84,7 @@ namespace QEQ_09.Controllers
                 Existencia = Models.BD.Login(Email, Password);
                 if (Existencia == true)
                 {
-                    ViewBag.Usuario = "Bienvenido ";
+                    ViewBag.Usuario = "Bienvenido";
                     return View("Index");
                 }
                 else
@@ -156,8 +156,8 @@ namespace QEQ_09.Controllers
             else if (Accion == "Modificar")
             {
                 Personaje x = BD.ObtenerPersonaje(id);
-                return View("EditarPersonaje",x);
-                
+                return View("EditarPersonaje", x);
+
             }
             else if (Accion == "Eliminar")
             {
@@ -167,7 +167,10 @@ namespace QEQ_09.Controllers
 
             else if (Accion == "Asignar")
             {
-               
+                ViewBag.CaracteristicasPer = BD.ObtenerPersonaje(id).Caracteristicas;
+                ViewBag.Caracteristicas = BD.ListarCaracteristicas();
+                ViewBag.Categorias = BD.ListarCategoriaCaracteristica();
+                ViewBag.idPersonaje = id;
                 return View("AsignarCaracteristicas");
             }
             return View();
@@ -183,11 +186,11 @@ namespace QEQ_09.Controllers
             return View();
         }
 
-
-
-
-
-
+        public ActionResult InsertarCarPer(int idPersonaje, List<int> caracteristicas)
+        {
+            BD.AsignarCaracteristicasPersonaje(idPersonaje, caracteristicas);
+            return RedirectToAction("AdminPersonajes");
+        }
 
         [HttpPost]
         public ActionResult GuardarPersonaje(Personaje x)
@@ -213,7 +216,7 @@ namespace QEQ_09.Controllers
             }
             else
             {
-                BD.InsertarPersonaje(new Personaje(-1, p.Nombre1, p.Fk_Categoria));
+                BD.InsertarPersonaje(new Personaje(-1, p.Nombre1, p.Fk_Categoria, p.Caracteristicas));
                 return RedirectToAction("AdminPersonajes");
                
             }
@@ -258,9 +261,6 @@ namespace QEQ_09.Controllers
             }
             return View();
         }
-
-    
-          
 
         [HttpPost]
         public ActionResult GuardarPregunta(Pregunta p)

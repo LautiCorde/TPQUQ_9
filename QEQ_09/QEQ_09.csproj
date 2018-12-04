@@ -153,6 +153,7 @@
     </Compile>
     <Compile Include="Models\BD.cs" />
     <Compile Include="Models\Caracteristicas.cs" />
+    <Compile Include="Models\CategoriaCaracteristica.cs" />
     <Compile Include="Models\CategoriaPersonaje.cs" />
     <Compile Include="Models\Personaje.cs" />
     <Compile Include="Models\Pregunta.cs" />
