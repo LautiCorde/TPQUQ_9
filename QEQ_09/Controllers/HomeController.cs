@@ -156,6 +156,7 @@ namespace QEQ_09.Controllers
             else if (Accion == "Modificar")
             {
                 Personaje x = BD.ObtenerPersonaje(id);
+                ViewBag.Caracteristicas = BD.ListarCategoriaPersonaje();
                 return View("EditarPersonaje", x);
 
             }

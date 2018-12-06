@@ -3,19 +3,22 @@
 @{
     ViewBag.Title = "EditarPersonaje";
 }
-
 <style>
     body {
         background-color: deepskyblue;
     }
 </style>
 }
-
 <h2>EditarPersonaje</h2>
+
+
 
 <form action="@Url.Action("GuardarPersonaje","Home")" method="post">
     <p>Nombre: @Html.TextBoxFor((x => x.Nombre1), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.Nombre1)</p><br />
-    <p>IDCategoria: @Html.TextBoxFor((x => x.Fk_Categoria), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.Fk_Categoria)</p><br />
+    <!--<p>IDCategoria: @Html.TextBoxFor((x => x.Fk_Categoria), (object)ViewBag.Enabled) @Html.ValidationMessageFor(x => x.Fk_Categoria)</p><br />
+    @Html.HiddenFor(x => x.IdPersonaje)<br />-->
+
+    <p>IDCategoria: @Html.DropDownListFor((x => x.Fk_Categoria), new SelectList(ViewBag.Caracteristicas, "IdCatPer", "CatPer1")) @Html.ValidationMessageFor(x => x.Fk_Categoria)</p><br />
     @Html.HiddenFor(x => x.IdPersonaje)<br />
     <input id="submit" type="submit" value="Guardar" />
 </form>

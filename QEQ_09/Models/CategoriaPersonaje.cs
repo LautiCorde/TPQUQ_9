@@ -9,7 +9,7 @@ namespace QEQ_09.Models
     public class CategoriaPersonaje
     {
         int idCatPer;
-       string CatPer;
+        string CatPer;
 
         public CategoriaPersonaje() { }
 
